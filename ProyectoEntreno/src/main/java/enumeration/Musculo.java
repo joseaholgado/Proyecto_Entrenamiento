@@ -1,0 +1,16 @@
+package enumeration;
+
+public enum Musculo {
+
+	BICEPS,
+	TRICEPS,
+	ANTEBRAZOS,
+	DORSAL,
+	PECTORAL,
+	DELTOIDES,
+	FEMORAL,
+	GLUTEOS,
+	CUADRICEPS,
+	GEMELOS,
+	CORE
+}
