@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import clases.Usuario;
+import exception.FechaConLetras;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -21,6 +22,8 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import com.toedter.calendar.JCalendar;
@@ -152,20 +155,25 @@ public class PantallaRegistro extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				String nombre=campoNombre.getText();
 				String email=campoCorreo.getText();
-				char[] contraseña=campoContraseña.getPassword();
+				String contraseña=new String (campoContraseña.getPassword());
 				String contraseñaUsuario=null;
-				for(byte i=0;i<contraseña.length;i++) {
-					contraseñaUsuario+=contraseña[i];
-				}
+				
 				Date fechaDate=new Date (caleFecha.getDate().getTime());			
 				LocalDate fecha = fechaDate.toLocalDate();
 				System.out.println(fechaDate);
 				
 				try {
-					
-					Usuario usuarioRegistro=new Usuario(nombre, email, contraseñaUsuario, fecha);
+					ventana.usuarioLogado=new Usuario(nombre, email, contraseña, fecha);
+					JOptionPane.showMessageDialog(ventana, "Su registro ha sido exitoso "+ventana.usuarioLogado.getNombre(), "Registro exitoso",
+							JOptionPane.INFORMATION_MESSAGE);
+					Usuario usuarioRegistro=new Usuario(nombre, email, contraseña, fecha);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Registro fallido",
+							JOptionPane.INFORMATION_MESSAGE);
+					e1.printStackTrace();
+				}catch ( FechaConLetras e1) {
+					JOptionPane.showMessageDialog(ventana, "Has introducido letras en la fecha ", "Registro fallido",
+							JOptionPane.INFORMATION_MESSAGE);
 					e1.printStackTrace();
 				}
 				ventana.cambiarAPantalla(PantallaExito.class);

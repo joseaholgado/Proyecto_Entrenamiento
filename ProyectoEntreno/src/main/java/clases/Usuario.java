@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 
-import exception.ClienteNoExisteException;
+import exception.UsuarioNoExisteException;
 import exception.ContraseñaInvalidaExcepcion;
+import exception.FechaConLetras;
 import utilidades.DAO;
 
 public class Usuario extends ElementoConNombre {
@@ -30,7 +31,7 @@ public class Usuario extends ElementoConNombre {
 		this.altura = altura;
 		this.planEntreno = planEntreno;
 	}
-	public Usuario(String nombre, String email, String contraseña, LocalDate fechaNacimiento) throws SQLException {
+	public Usuario(String nombre, String email, String contraseña, LocalDate fechaNacimiento) throws SQLException, FechaConLetras {
 		super(nombre);
 		 HashMap <String, Object> hs=new HashMap <String, Object>();
 		    hs.put("nombre",nombre);
@@ -44,7 +45,7 @@ public class Usuario extends ElementoConNombre {
 		
 	}
 	
-	 public Usuario( String email, String contraseña) throws SQLException, ClienteNoExisteException, ContraseñaInvalidaExcepcion {
+	 public Usuario( String email, String contraseña2) throws SQLException, UsuarioNoExisteException, ContraseñaInvalidaExcepcion {
 		 super();
 		  LinkedHashSet<String> lhs=new LinkedHashSet<String>();
 		  lhs.add("email");
@@ -55,15 +56,15 @@ public class Usuario extends ElementoConNombre {
 		  hm.put("email", email);
 		  ArrayList<Object> resultado=DAO.consultar("usuario", lhs, hm);
 		  if(resultado.isEmpty()) {
-			  throw new ClienteNoExisteException("El usuario no está en la base de datos");
+			  throw new UsuarioNoExisteException("El usuario no está en la base de datos");
 		  }else {
 			  String contraseñaAlmacenada=(String) resultado.get(3);//Llama al arrayList de la posicion de la contraseña que es en este caso 3
-			  if(!contraseñaAlmacenada.equals(contraseña)) {
+			  if(!contraseñaAlmacenada.equals(contraseña2)) {
 				  throw new ContraseñaInvalidaExcepcion("La contraseña es invalida papi");		  
 			  }else {
 				  this.email= (String) resultado.get(0);
 				  this.nombre=(String) resultado.get(1);
-				  this.fechaNacimiento= (LocalDate) resultado.get(2);
+				  this.fechaNacimiento= (LocalDate) resultado.get(3);
 			  }
 		  }
 		  

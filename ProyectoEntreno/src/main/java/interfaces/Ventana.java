@@ -5,11 +5,12 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
+import clases.Calculo;
+import clases.Usuario;
+
 public class Ventana extends JFrame{
-	private byte TipoEntrenamiento;
-	private byte nivel;
-	private byte diasEntrenamiento;
-	private byte lugar;
+	protected Calculo calculo;
+	protected Usuario usuarioLogado;
 	
 	public Ventana() {
 		this.setSize(680,445); //Lo hace visible
@@ -33,9 +34,13 @@ public class Ventana extends JFrame{
 		if (clase.equals(PantallaDatos.class)) {
 			this.setContentPane(new PantallaDatos(this));
 		}
+		if (clase.equals(PantallaResultado.class)) {
+			this.setContentPane(new PantallaResultado(this));
+		}
 		this.getContentPane().setVisible(true);
 		
 	}
 
+	
 	
 }

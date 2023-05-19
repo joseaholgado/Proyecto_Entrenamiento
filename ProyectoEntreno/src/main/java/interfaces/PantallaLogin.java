@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -18,8 +19,10 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import clases.Usuario;
-import exception.ClienteNoExisteException;
+import exception.UsuarioNoExisteException;
 import exception.ContraseñaInvalidaExcepcion;
+import exception.UsuarioNoExisteException;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -28,6 +31,7 @@ public class PantallaLogin extends JPanel{
 	private Ventana ventana;
 	private JTextField campoCorreo;
 	private JPasswordField campoContraseña;
+	
 	public PantallaLogin(Ventana v) {
 		this.ventana=v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -37,43 +41,7 @@ public class PantallaLogin extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		final JButton btnSesion = new JButton("Iniciar Sesión");
-		btnSesion.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Usuario usuarioLogin=null;
-				do {
-				String correo=campoCorreo.getText();
-				char[] contraseña=campoContraseña.getPassword();
-				String contraseñaUsuario=null;
-				for(byte i=0;i<contraseña.length;i++) {
-					contraseñaUsuario+=contraseña[i];
-				}
-				try {
-					usuarioLogin= new Usuario(correo, contraseñaUsuario);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (ClienteNoExisteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (ContraseñaInvalidaExcepcion e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				}while(usuarioLogin==null);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				btnSesion.setBackground(Color.ORANGE);
-				btnSesion.setForeground(Color.WHITE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				btnSesion.setBackground(null);
-				btnSesion.setForeground(null);
-			}
-		});
+		
 		JLabel etTitulo = new JLabel("Iniciar Sesión");
 		etTitulo.setFont(new Font("Tahoma", Font.ITALIC, 23));
 		GridBagConstraints gbc_etTitulo = new GridBagConstraints();
@@ -125,6 +93,48 @@ public class PantallaLogin extends JPanel{
 		gbc_campoContraseña.gridx = 1;
 		gbc_campoContraseña.gridy = 5;
 		add(campoContraseña, gbc_campoContraseña);
+		
+		final JButton btnSesion = new JButton("Iniciar Sesión");
+		btnSesion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Usuario usuarioLogin=null;
+				String correo=campoCorreo.getText();
+				String contraseña=new String(campoContraseña.getPassword());
+				String contraseñaUsuario=null;
+				
+				try {
+					ventana.usuarioLogado=new Usuario(correo,contraseña);
+					JOptionPane.showMessageDialog(ventana, "Bienveni@ "+ventana.usuarioLogado.getNombre(), "Inicio de sesión exitoso",
+							JOptionPane.INFORMATION_MESSAGE);
+					usuarioLogin= new Usuario(correo, contraseñaUsuario);
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Login fallido",
+							JOptionPane.INFORMATION_MESSAGE);
+					e1.printStackTrace();
+				} catch (UsuarioNoExisteException e1) {
+					JOptionPane.showMessageDialog(ventana, "No se encuentra registrado", "Login fallido",
+							JOptionPane.INFORMATION_MESSAGE);
+					e1.printStackTrace();
+				} catch (ContraseñaInvalidaExcepcion e1) {
+					JOptionPane.showMessageDialog(ventana, "Contraseña no es correcta ", "Login fallido",
+							JOptionPane.INFORMATION_MESSAGE);
+					e1.printStackTrace();
+				};
+				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnSesion.setBackground(Color.ORANGE);
+				btnSesion.setForeground(Color.WHITE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnSesion.setBackground(null);
+				btnSesion.setForeground(null);
+			}
+		});
+		
 		btnSesion.setBackground(UIManager.getColor("Button.light"));
 		btnSesion.setFont(new Font("Arial", Font.PLAIN, 15));
 		GridBagConstraints gbc_btnSesion = new GridBagConstraints();

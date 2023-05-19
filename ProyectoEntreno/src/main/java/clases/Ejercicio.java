@@ -23,6 +23,15 @@ public class Ejercicio extends ElementoConNombre{
 		this.nivelUsuario = nivelUsuario;
 		this.tipoEjercicio = tipoEjercicio;
 	}
+	public Ejercicio(String nombre, String explicacion, Musculo musculo,
+			NivelUsuario nivelUsuario, TipoEjercicio tipoEjercicio) {
+		super(nombre);
+		this.explicacion = explicacion;
+		this.musculo = musculo;
+		this.nivelUsuario = nivelUsuario;
+		this.tipoEjercicio = tipoEjercicio;
+	}
+	
 
 	public String getExplicacion() {
 		return explicacion;

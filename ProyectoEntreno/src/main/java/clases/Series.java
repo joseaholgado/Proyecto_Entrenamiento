@@ -21,6 +21,7 @@ public class Series extends Ejercicio{
 		this.rir = rir;
 		this.descansoEntreEjercicios = descansoEntreEjercicios;
 	}
+	
 
 
 	public byte getRepeticiones() {
