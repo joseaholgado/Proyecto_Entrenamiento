@@ -299,6 +299,7 @@ public class PantallaDatos extends JPanel{
 	    }
 	    
 
+	    ventana.calculo=new Calculo(peso,altura);
 	    ventana.calculo=new Calculo(nivel,lugar,diasEntrenamiento,tipoEntreno);
 	    System.out.println(ventana.calculo);
 	}

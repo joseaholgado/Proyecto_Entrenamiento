@@ -58,7 +58,7 @@ public class Usuario extends ElementoConNombre {
 		  if(resultado.isEmpty()) {
 			  throw new UsuarioNoExisteException("El usuario no está en la base de datos");
 		  }else {
-			  String contraseñaAlmacenada=(String) resultado.get(3);//Llama al arrayList de la posicion de la contraseña que es en este caso 3
+			  String contraseñaAlmacenada=(String) resultado.get(2);//Llama al arrayList de la posicion de la contraseña que es en este caso 2
 			  if(!contraseñaAlmacenada.equals(contraseña2)) {
 				  throw new ContraseñaInvalidaExcepcion("La contraseña es invalida papi");		  
 			  }else {

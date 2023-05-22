@@ -1,6 +1,7 @@
 package clases;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import enumeration.Musculo;
 import enumeration.NivelUsuario;
@@ -22,6 +23,11 @@ public class Ejercicio extends ElementoConNombre{
 		this.musculo = musculo;
 		this.nivelUsuario = nivelUsuario;
 		this.tipoEjercicio = tipoEjercicio;
+		
+		if(musculo==musculo.PECTORAL) {
+			nombre="";
+		}
+		
 	}
 	public Ejercicio(String nombre, String explicacion, Musculo musculo,
 			NivelUsuario nivelUsuario, TipoEjercicio tipoEjercicio) {
@@ -30,8 +36,11 @@ public class Ejercicio extends ElementoConNombre{
 		this.musculo = musculo;
 		this.nivelUsuario = nivelUsuario;
 		this.tipoEjercicio = tipoEjercicio;
+		
+		
 	}
-	
+
+
 
 	public String getExplicacion() {
 		return explicacion;

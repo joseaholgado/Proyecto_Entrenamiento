@@ -6,8 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -32,7 +36,7 @@ public class PantallaLogin extends JPanel{
 	private JTextField campoCorreo;
 	private JPasswordField campoContraseña;
 	
-	public PantallaLogin(Ventana v) {
+	public PantallaLogin(Ventana v) {		
 		this.ventana=v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{216, 239, 0, 0, 0};
@@ -169,7 +173,19 @@ public class PantallaLogin extends JPanel{
 		gbc_btnRegistro.gridx = 1;
 		gbc_btnRegistro.gridy = 7;
 		add(btnRegistro, gbc_btnRegistro);
+		
+		File archivoImagen=new File("./Login.png");
+		try {
+			BufferedImage imagen=ImageIO.read(archivoImagen);
+			BufferedImage img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
+			
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 	}
+	
 
 	private static class __Tmp {
 		private static void __tmp() {

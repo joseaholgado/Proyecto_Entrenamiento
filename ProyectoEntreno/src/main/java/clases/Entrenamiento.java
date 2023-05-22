@@ -12,7 +12,8 @@ public class Entrenamiento extends ElementoConNombre{
 		this.ejercicios = ejercicios;
 		this.descripcion = descripcion;
 	}
-
+	
+	
 	public ArrayList<Series> getEjercicios() {
 		return ejercicios;
 	}

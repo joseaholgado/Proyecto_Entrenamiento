@@ -44,7 +44,7 @@ public class PantallaRegistro extends JPanel{
 	
 	public PantallaRegistro(Ventana v) {
 		this.ventana = v;
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/mm/dd");
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{51, 194, 210, 333, 0};
 		gridBagLayout.rowHeights = new int[]{36, 33, 13, 19, 13, 19, 13, 19, 32, 46, 51, 2, 50, 0};
@@ -158,7 +158,7 @@ public class PantallaRegistro extends JPanel{
 				String contraseña=new String (campoContraseña.getPassword());
 				String contraseñaUsuario=null;
 				
-				Date fechaDate=new Date (caleFecha.getDate().getTime());			
+				Date fechaDate=new Date (caleFecha.getDate().getTime());	
 				LocalDate fecha = fechaDate.toLocalDate();
 				System.out.println(fechaDate);
 				
