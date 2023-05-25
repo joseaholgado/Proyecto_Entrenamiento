@@ -18,6 +18,7 @@ public class Ventana extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);//Nos cierra la ejecucion del programa tras cerrar la ventana
 		this.setLocationRelativeTo(null);//
 		this.setContentPane(new PantallaLogin(this));
+		this.setIconImage(new ImageIcon("./Icono.jpg").getImage());
 		this.setVisible(true);//Para que sea visible la ventana
 	}
 	public void cambiarAPantalla(Class<?> clase) {

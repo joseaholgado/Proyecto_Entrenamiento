@@ -48,7 +48,7 @@ public class PantallaRegistro extends JPanel{
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{51, 194, 210, 333, 0};
 		gridBagLayout.rowHeights = new int[]{36, 33, 13, 19, 13, 19, 13, 19, 32, 46, 51, 2, 50, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -160,7 +160,7 @@ public class PantallaRegistro extends JPanel{
 				
 				Date fechaDate=new Date (caleFecha.getDate().getTime());	
 				LocalDate fecha = fechaDate.toLocalDate();
-				System.out.println(fechaDate);
+				System.out.println(fecha);
 				
 				try {
 					ventana.usuarioLogado=new Usuario(nombre, email, contraseña, fecha);
