@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import clases.PlanEntrenamiento;
 import interfaces.Ventana;
 
 public class MainEntreno {

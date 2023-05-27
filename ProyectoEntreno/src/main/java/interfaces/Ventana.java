@@ -5,12 +5,14 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
-import clases.Calculo;
+
+import clases.PlanEntrenamiento;
 import clases.Usuario;
 
 public class Ventana extends JFrame{
-	protected Calculo calculo;
 	protected Usuario usuarioLogado;
+	protected PlanEntrenamiento planEntrenamieto;
+	public PlanEntrenamiento planEntrenamiento;
 	
 	public Ventana() {
 		this.setSize(680,445); //Lo hace visible
@@ -26,22 +28,27 @@ public class Ventana extends JFrame{
 		if (clase.equals(PantallaLogin.class)) {
 			this.setContentPane(new PantallaLogin(this));
 		}
-		if (clase.equals(PantallaRegistro.class)) {
+		else if (clase.equals(PantallaRegistro.class)) {
 			this.setContentPane(new PantallaRegistro(this));
 		}
-		if (clase.equals(PantallaExito.class)) {
+		else if (clase.equals(PantallaExito.class)) {
 			this.setContentPane(new PantallaExito(this));
 		}
-		if (clase.equals(PantallaDatos.class)) {
+		else if (clase.equals(PantallaDatos.class)) {
 			this.setContentPane(new PantallaDatos(this));
 		}
-		if (clase.equals(PantallaResultado.class)) {
+		else if (clase.equals(PantallaResultado.class)) {
 			this.setContentPane(new PantallaResultado(this));
-		}
+		}else if(clase.equals(PantallaPanel.class)) {
+			this.setContentPane(new PantallaPanel(this));
+		}else if(clase.equals(PantallaListado.class)) {
+			this.setContentPane(new PantallaPanel(this));
+		}else if(clase.equals(PantallaEntreno.class)) {
+			this.setContentPane(new PantallaPanel(this));
 		this.getContentPane().setVisible(true);
 		
 	}
 
-	
+	}
 	
 }

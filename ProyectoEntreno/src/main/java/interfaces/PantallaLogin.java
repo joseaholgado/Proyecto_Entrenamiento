@@ -102,30 +102,29 @@ public class PantallaLogin extends JPanel{
 		btnSesion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Usuario usuarioLogin=null;
-				String correo=campoCorreo.getText();
-				String contraseña=new String(campoContraseña.getPassword());
-				String contraseñaUsuario=null;
-				
+				Usuario usuarioLogin;
+				String correo = campoCorreo.getText();
+				String contraseña = new String(campoContraseña.getPassword());
+
+				boolean comprobar=false;
+			
 				try {
-					ventana.usuarioLogado=new Usuario(correo,contraseña);
-					JOptionPane.showMessageDialog(ventana, "Bienveni@ "+ventana.usuarioLogado.getNombre(), "Inicio de sesión exitoso",
-							JOptionPane.INFORMATION_MESSAGE);
-					usuarioLogin= new Usuario(correo, contraseñaUsuario);
+					usuarioLogin = new Usuario(correo, contraseña);
+					comprobar=true;
+					if(comprobar) {
+						ventana.cambiarAPantalla(PantallaPanel.class);
+					}
 				} catch (SQLException e1) {
-					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Login fallido",
-							JOptionPane.INFORMATION_MESSAGE);
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (UsuarioNoExisteException e1) {
-					JOptionPane.showMessageDialog(ventana, "No se encuentra registrado", "Login fallido",
-							JOptionPane.INFORMATION_MESSAGE);
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (ContraseñaInvalidaExcepcion e1) {
-					JOptionPane.showMessageDialog(ventana, "Contraseña no es correcta ", "Login fallido",
-							JOptionPane.INFORMATION_MESSAGE);
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				};
-				
+				}
+
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {

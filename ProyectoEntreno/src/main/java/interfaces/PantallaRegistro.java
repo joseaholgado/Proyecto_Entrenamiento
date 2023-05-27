@@ -16,6 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -125,7 +126,7 @@ public class PantallaRegistro extends JPanel{
 		final JDateChooser caleFecha = new JDateChooser();
 		GridBagConstraints gbc_caleFecha = new GridBagConstraints();
 		caleFecha.setForeground(new Color(0, 0, 0));
-		caleFecha.setDateFormatString("dd/mm/yyyy");
+		caleFecha.setDateFormatString("d/MM/YYYY");
 		gbc_caleFecha.insets = new Insets(0, 0, 5, 5);
 		gbc_caleFecha.fill = GridBagConstraints.BOTH;
 		gbc_caleFecha.gridx = 2;
@@ -159,14 +160,17 @@ public class PantallaRegistro extends JPanel{
 				String contraseñaUsuario=null;
 				
 				Date fechaDate=new Date (caleFecha.getDate().getTime());	
-				LocalDate fecha = fechaDate.toLocalDate();
+				SimpleDateFormat formatoFecha=new SimpleDateFormat("d/MM/yyyy");
+				String fechaFormateada = formatoFecha.format(fechaDate);
+				System.out.println(fechaFormateada);
+				LocalDate fecha = caleFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				System.out.println(fecha);
 				
 				try {
 					ventana.usuarioLogado=new Usuario(nombre, email, contraseña, fecha);
 					JOptionPane.showMessageDialog(ventana, "Su registro ha sido exitoso "+ventana.usuarioLogado.getNombre(), "Registro exitoso",
 							JOptionPane.INFORMATION_MESSAGE);
-					Usuario usuarioRegistro=new Usuario(nombre, email, contraseña, fecha);
+					//Usuario usuarioRegistro=new Usuario(nombre, email, contraseña, fecha);
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Registro fallido",
 							JOptionPane.INFORMATION_MESSAGE);

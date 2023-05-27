@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -75,10 +76,11 @@ public class DAO {
 		it = columnas.values().iterator();
 		while (it.hasNext()) {
 			Object elemento = it.next();
-			if (elemento.getClass() != String.class && elemento.getClass() != Character.class) {
+			System.out.println(elemento.getClass());
+			if (elemento.getClass() != String.class && elemento.getClass() != Character.class  && elemento.getClass() !=java.time.LocalDate.class) {
 				consulta += elemento + ",";
 			} else {
-				consulta += "'" + (String) elemento + "',";
+				consulta += "'" + elemento.toString() + "',";
 			}
 		}
 		consulta = consulta.substring(0, consulta.length() - 1);
