@@ -8,6 +8,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import clases.Entrenamiento;
+import clases.Usuario;
+import utilidades.DAO;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class PantallaListado extends JPanel{
 	private Ventana ventana;
 	
@@ -21,14 +30,15 @@ public class PantallaListado extends JPanel{
 	JPanel panel = new JPanel();
 	add(panel, BorderLayout.SOUTH);
 	
-	JButton btnNewButton = new JButton("New button");
-	panel.add(btnNewButton);
+	JButton btnAtras = new JButton("Atrás");
+	btnAtras.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ventana.cambiarAPantalla(PantallaPanel.class);
+		}
+	});
+	panel.add(btnAtras);
 	
-	JButton btnNewButton_1 = new JButton("New button");
-	panel.add(btnNewButton_1);
-	
-	JButton btnNewButton_2 = new JButton("New button");
-	panel.add(btnNewButton_2);
 	
 	JScrollPane lista = new JScrollPane();
 	add(lista, BorderLayout.CENTER);
@@ -36,9 +46,18 @@ public class PantallaListado extends JPanel{
 	JPanel contenedorElemento = new JPanel();
 	lista.setViewportView(contenedorElemento);
 	contenedorElemento.setLayout(new BoxLayout(contenedorElemento, BoxLayout.Y_AXIS));
-	
-	for(byte i=0;i<100;i++) {
-		contenedorElemento.add(new ElementoListaUsuario(ventana,ventana.usuarioLogado));
+
+	/*try {
+		ArrayList<Usuario> usuarios = ventana.usuarioLogado.getTodos();
+		for(byte i=0;i<usuarios.size();i++) {
+			System.out.println(usuarios.get(i));
+		}
+	} catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
 	}
+
+	contenedorElemento.add(new ElementoListaUsuario(ventana, ventana.usuarioLogado));*/
+
 }
 }

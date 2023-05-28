@@ -9,8 +9,14 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+import clases.Ejercicio;
+import clases.Entrenamiento;
 import clases.PlanEntrenamiento;
+import clases.Series;
 import clases.Usuario;
+import enumeration.Musculo;
+import enumeration.NivelUsuario;
+import enumeration.TipoEjercicio;
 
 import javax.swing.JTable;
 import javax.swing.ButtonGroup;
@@ -20,6 +26,9 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class PantallaDatos extends JPanel{
 	private Ventana ventana;
@@ -27,14 +36,13 @@ public class PantallaDatos extends JPanel{
 	private final ButtonGroup btnNivel = new ButtonGroup();
 	private final ButtonGroup btnDias = new ButtonGroup();
 	private final ButtonGroup btnTipoEntreno = new ButtonGroup();
-	private PlanEntrenamiento planEntreno;
 	private byte nivel;
 	private byte lugar;
 	private byte tipoEntreno;
-	
+	private PlanEntrenamiento planE;
 	public PantallaDatos(Ventana v) {
 		this.ventana=v;
-		
+		//this.planE=ventana.planEntrenamieto;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{132, 39, 56, 419, 0};
 		gridBagLayout.rowHeights = new int[]{65, 13, 19, 34, 13, 21, 13, 21, 13, 21, 13, 21, 0, 0, 0};
@@ -221,8 +229,14 @@ public class PantallaDatos extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				ventana.planEntrenamiento=new PlanEntrenamiento(nivel,lugar,tipoEntreno);
-				ventana.cambiarAPantalla(PantallaResultado.class);
+				try {
+					planE=new PlanEntrenamiento(nivel,lugar,tipoEntreno,"lunes",ventana.usuarioLogado.getEmail());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				System.out.println(planE);
+				ventana.cambiarAPantalla(PantallaLogin.class);
 				
 				System.out.println();
 			}

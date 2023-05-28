@@ -2,9 +2,11 @@ package interfaces;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Graphics;
+
 import javax.swing.JTextField;
 
 import clases.Usuario;
@@ -14,6 +16,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -42,6 +47,20 @@ public class PantallaRegistro extends JPanel{
 	private JTextField campoNombre;
 	private JTextField campoCorreo;
 	private JPasswordField campoContraseña;
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paintComponent(g);
+		try {
+			BufferedImage imagen=ImageIO.read(new File("./Registro.png"));
+			g.drawImage(imagen, 0,0,this );
+			g.drawImage(imagen, 0, 0, this.getWidth(), this.getHeight(), new Color(0 ,0,0),null);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
 	
 	public PantallaRegistro(Ventana v) {
 		this.ventana = v;
@@ -123,13 +142,12 @@ public class PantallaRegistro extends JPanel{
 		gbc_etFecha.gridy = 6;
 		add(etFecha, gbc_etFecha);
 		
-		final JDateChooser caleFecha = new JDateChooser();
+		final JCalendar caleFecha = new JCalendar();
 		GridBagConstraints gbc_caleFecha = new GridBagConstraints();
-		caleFecha.setForeground(new Color(0, 0, 0));
-		caleFecha.setDateFormatString("d/MM/YYYY");
+		gbc_caleFecha.gridheight = 4;
 		gbc_caleFecha.insets = new Insets(0, 0, 5, 5);
 		gbc_caleFecha.fill = GridBagConstraints.BOTH;
-		gbc_caleFecha.gridx = 2;
+		gbc_caleFecha.gridx = 3;
 		gbc_caleFecha.gridy = 7;
 		add(caleFecha, gbc_caleFecha);
 		

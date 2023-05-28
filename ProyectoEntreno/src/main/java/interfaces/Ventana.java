@@ -5,15 +5,14 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
-
+import clases.Entrenamiento;
 import clases.PlanEntrenamiento;
 import clases.Usuario;
 
 public class Ventana extends JFrame{
 	protected Usuario usuarioLogado;
-	protected PlanEntrenamiento planEntrenamieto;
-	public PlanEntrenamiento planEntrenamiento;
-	
+	protected PlanEntrenamiento plan;
+	protected Entrenamiento entreno;
 	public Ventana() {
 		this.setSize(680,445); //Lo hace visible
 		this.setTitle("Entreno Z");//Es el título de la ventana
@@ -36,15 +35,15 @@ public class Ventana extends JFrame{
 		}
 		else if (clase.equals(PantallaDatos.class)) {
 			this.setContentPane(new PantallaDatos(this));
-		}
-		else if (clase.equals(PantallaResultado.class)) {
-			this.setContentPane(new PantallaResultado(this));
+			
 		}else if(clase.equals(PantallaPanel.class)) {
 			this.setContentPane(new PantallaPanel(this));
+			
 		}else if(clase.equals(PantallaListado.class)) {
-			this.setContentPane(new PantallaPanel(this));
+			this.setContentPane(new PantallaListado(this));
+			
 		}else if(clase.equals(PantallaEntreno.class)) {
-			this.setContentPane(new PantallaPanel(this));
+			this.setContentPane(new PantallaEntreno(this));
 		this.getContentPane().setVisible(true);
 		
 	}

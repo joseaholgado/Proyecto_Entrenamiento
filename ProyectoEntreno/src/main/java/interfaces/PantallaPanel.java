@@ -2,6 +2,7 @@ package interfaces;
 
 import javax.swing.JPanel;
 
+import clases.Entrenamiento;
 import clases.PlanEntrenamiento;
 
 import java.awt.GridBagLayout;
@@ -18,11 +19,12 @@ import java.awt.Font;
 public class PantallaPanel extends JPanel{
 	
 	private Ventana ventana;
-	
-	public PantallaPanel(final Ventana v ){
+	private PlanEntrenamiento plan;
+	public PantallaPanel( Ventana v ){
 		this.ventana=v;
-		
-		//v.planEntrenamiento.calcuEntreno();
+		//this.plan=planEntreno;
+		System.out.println(plan);
+		//plan.calcuEntreno();
 		
 		setBackground(Color.GREEN);
 		GridBagLayout gridBagLayout = new GridBagLayout();

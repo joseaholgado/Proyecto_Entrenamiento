@@ -22,6 +22,18 @@ public class Series extends Ejercicio{
 		this.descansoEntreEjercicios = descansoEntreEjercicios;
 	}
 	
+	public Series(String nombre, String explicacion,  Musculo musculo, NivelUsuario nivelUsuario,
+			TipoEjercicio tipoEjercicio, byte repeticiones, byte rir, LocalTime descansoEntreEjercicios) {
+		super(nombre, explicacion, musculo, nivelUsuario, tipoEjercicio);
+		this.setNombre(nombre);
+		this.setExplicacion(explicacion);
+		this.setMusculo(musculo);
+		this.setNivelUsuario(nivelUsuario);
+		this.setTipoEjercicio(tipoEjercicio);
+		this.repeticiones = repeticiones;
+		this.rir = rir;
+		this.descansoEntreEjercicios = descansoEntreEjercicios;
+	}
 
 
 	public byte getRepeticiones() {

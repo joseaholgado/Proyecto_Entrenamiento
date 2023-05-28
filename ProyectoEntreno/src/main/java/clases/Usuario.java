@@ -129,6 +129,36 @@ public class Usuario extends ElementoConNombre {
 	public void setPlanEntreno(PlanEntrenamiento planEntreno) {
 		this.planEntreno = planEntreno;
 	}
+	
+	/*public static ArrayList<Usuario> getTodos() throws SQLException{
+		   LinkedHashSet<String> columnasSacar = new LinkedHashSet<>();
+		   columnasSacar.add("nombre");
+		   columnasSacar.add("email");
+		   columnasSacar.add("contraseña");
+		   columnasSacar.add("fechaNacimiento");
+		   HashMap<String,Object> restricciones = new HashMap<>();
+		   ArrayList<Usuario> usuarios = new ArrayList<>();
+		   ArrayList<Object> listaUsuarios= new ArrayList<>();
+		   listaUsuarios=DAO.consultar("usuario", columnasSacar, restricciones);
+		   
+		   //esto DE ABAJO esta mal hay que RREGLARLO.
+		   
+		   
+		   /*for(byte i =0;i<listaUsuarios.size();i+=4) {
+			   
+			try {
+				usuarios.add(null);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (FechaConLetras e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			   usuarios.add(usuarios);
+		   }
+		   return usuarios;
+	   }*/
 
 
 	@Override

@@ -24,9 +24,6 @@ public class Ejercicio extends ElementoConNombre{
 		this.nivelUsuario = nivelUsuario;
 		this.tipoEjercicio = tipoEjercicio;
 		
-		if(musculo==musculo.PECTORAL) {
-			nombre="";
-		}
 		
 	}
 	public Ejercicio(String nombre, String explicacion, Musculo musculo,
@@ -41,6 +38,13 @@ public class Ejercicio extends ElementoConNombre{
 	}
 
 
+	public Ejercicio(NivelUsuario nivelUsuario, TipoEjercicio tipoEjercicio) {
+		this.setNombre("Press Banca");
+		this.explicacion="Levantar barra en banco plano";
+		this.musculo=Musculo.PECTORAL;
+		this.nivelUsuario=nivelUsuario;
+		this.tipoEjercicio=tipoEjercicio;
+	}
 
 	public String getExplicacion() {
 		return explicacion;

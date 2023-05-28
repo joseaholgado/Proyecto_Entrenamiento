@@ -73,9 +73,9 @@ public class DAO {
 		}
 		consulta = consulta.substring(0, consulta.length() - 1);
 		consulta += ") values (";
-		it = columnas.values().iterator();
-		while (it.hasNext()) {
-			Object elemento = it.next();
+		Iterator itm = columnas.values().iterator();
+		while (itm.hasNext()) {
+			Object elemento = itm.next();
 			System.out.println(elemento.getClass());
 			if (elemento.getClass() != String.class && elemento.getClass() != Character.class  && elemento.getClass() !=java.time.LocalDate.class) {
 				consulta += elemento + ",";

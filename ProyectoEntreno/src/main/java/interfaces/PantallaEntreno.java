@@ -5,11 +5,15 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
+
+import utilidades.DAO;
+
 import java.awt.Insets;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class PantallaEntreno extends JPanel{
 	private Ventana ventana;
@@ -43,6 +47,7 @@ public class PantallaEntreno extends JPanel{
 		gbc_textField.gridy = 4;
 		add(textField, gbc_textField);
 		textField.setColumns(10);
+		//ArrayList<Object>lista=DAO.consultar("entrenamiento", null, null)
 		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addMouseListener(new MouseAdapter() {

@@ -15,7 +15,7 @@ public class MainEntreno {
 	public static void main(String[] args) {
 		
 		
-		Ventana v=new Ventana();
+		
 
 		BufferedImage imagen =new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
 		float contadorRojo=0;
@@ -24,7 +24,7 @@ public class MainEntreno {
 		try {
 			imagen = ImageIO.read(new File("./Icono.jpeg"));
 			ImageIO.write(imagen, "JPG", new File("./Icono.jpg"));
-			for (short i = 0; i < imagen.getWidth(); i++) {
+			/*for (short i = 0; i < imagen.getWidth(); i++) {
 				for (short j = 0; j < imagen.getHeight(); j++) {
 					String colorEscogido = String.format("%02X", (int) contadorRojo);
 					colorEscogido += String.format("%02X", (int) contadorVerde);
@@ -32,12 +32,12 @@ public class MainEntreno {
 					imagen.setRGB(i, j, Integer.parseInt(colorEscogido, 16));
 				}
 			}
-			ImageIO.write(imagen,"JPG",new File("./Icono.jpg"));
+			ImageIO.write(imagen,"JPG",new File("./Icono.jpg"));*/
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		Ventana v=new Ventana();
 		/*try {
 			imagen = ImageIO.read(new File("./Icono.jpeg"));
 			ImageIO.write(imagen,"JPG",new File("./fotoclase.jpg"));

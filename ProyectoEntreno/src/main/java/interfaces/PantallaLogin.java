@@ -2,6 +2,7 @@ package interfaces;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -22,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
+import clases.PlanEntrenamiento;
 import clases.Usuario;
 import exception.UsuarioNoExisteException;
 import exception.ContraseñaInvalidaExcepcion;
@@ -35,7 +37,23 @@ public class PantallaLogin extends JPanel{
 	private Ventana ventana;
 	private JTextField campoCorreo;
 	private JPasswordField campoContraseña;
+	private PlanEntrenamiento plan;
 	
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paintComponent(g);
+		try {
+			BufferedImage imagen=ImageIO.read(new File("./Login/Login.png"));
+			g.drawImage(imagen, 0,0,this );
+			g.drawImage(imagen, 0, 0, this.getWidth(), this.getHeight(), new Color(0 ,0,0),null);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+
+
 	public PantallaLogin(Ventana v) {		
 		this.ventana=v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -109,19 +127,26 @@ public class PantallaLogin extends JPanel{
 				boolean comprobar=false;
 			
 				try {
-					usuarioLogin = new Usuario(correo, contraseña);
+					ventana.usuarioLogado = new Usuario(correo, contraseña);
 					comprobar=true;
 					if(comprobar) {
+						ventana.plan=new PlanEntrenamiento(ventana.usuarioLogado .getEmail());
+						System.out.println(ventana.plan);
 						ventana.cambiarAPantalla(PantallaPanel.class);
+						JOptionPane.showMessageDialog(ventana, "Bienvenid@ de nuevo "+ventana.usuarioLogado .getNombre(), "Login exitoso",
+								JOptionPane.INFORMATION_MESSAGE);
+						
 					}
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (UsuarioNoExisteException e1) {
-					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(ventana, "Login Error"+ventana.usuarioLogado.getNombre(), "Nombre incorrecto",
+							JOptionPane.INFORMATION_MESSAGE);
 					e1.printStackTrace();
 				} catch (ContraseñaInvalidaExcepcion e1) {
-					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(ventana, "Login Error"+ventana.usuarioLogado.getNombre(), "Contraseña incorrecta",
+							JOptionPane.INFORMATION_MESSAGE);
 					e1.printStackTrace();
 				}
 
@@ -173,15 +198,8 @@ public class PantallaLogin extends JPanel{
 		gbc_btnRegistro.gridy = 7;
 		add(btnRegistro, gbc_btnRegistro);
 		
-		File archivoImagen=new File("./Login.png");
-		try {
-			BufferedImage imagen=ImageIO.read(archivoImagen);
-			BufferedImage img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
-			
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
+	
 		
 	}
 	
