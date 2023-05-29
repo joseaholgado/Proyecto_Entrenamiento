@@ -12,6 +12,7 @@ public class Series extends Ejercicio{
 	private byte repeticiones;
 	private byte rir;
 	private LocalTime descansoEntreEjercicios;
+	private byte nseries;
 	
 	
 	public Series(String nombre, String explicacion, BufferedImage imagen, Musculo musculo, NivelUsuario nivelUsuario,
@@ -23,7 +24,7 @@ public class Series extends Ejercicio{
 	}
 	
 	public Series(String nombre, String explicacion,  Musculo musculo, NivelUsuario nivelUsuario,
-			TipoEjercicio tipoEjercicio, byte repeticiones, byte rir, LocalTime descansoEntreEjercicios) {
+			TipoEjercicio tipoEjercicio, byte repeticiones, byte rir, LocalTime descansoEntreEjercicios,byte nseries) {
 		super(nombre, explicacion, musculo, nivelUsuario, tipoEjercicio);
 		this.setNombre(nombre);
 		this.setExplicacion(explicacion);
@@ -33,6 +34,7 @@ public class Series extends Ejercicio{
 		this.repeticiones = repeticiones;
 		this.rir = rir;
 		this.descansoEntreEjercicios = descansoEntreEjercicios;
+		this.nseries=nseries;
 	}
 
 
@@ -68,8 +70,8 @@ public class Series extends Ejercicio{
 
 	@Override
 	public String toString() {
-		return "Series [repeticiones=" + repeticiones + ", rir=" + rir + ", descansoEntreEjercicios="
-				+ descansoEntreEjercicios + "]";
+		return super.toString()+"Series=\nrepeticiones: " + repeticiones + "\nrir: " + rir + "\nDescanso entre ejercicios: "
+				+ descansoEntreEjercicios +"\n";
 	}
 	
 	

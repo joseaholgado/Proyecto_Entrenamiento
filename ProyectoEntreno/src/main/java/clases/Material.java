@@ -26,7 +26,7 @@ public class Material extends ElementoConNombre {
 	}
 	@Override
 	public String toString() {
-		return "Material [descripcion=" + descripcion + ", imagen=" + imagen + "]";
+		return super.toString()+"Material= descripcion: " + descripcion + "\n imagen: " + imagen;
 	}
 
 	

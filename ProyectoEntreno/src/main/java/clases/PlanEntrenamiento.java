@@ -14,17 +14,18 @@ import utilidades.DAO;
 
 public class PlanEntrenamiento {
 
-	private String entrenamientos;
+	private ArrayList<Entrenamiento> entreno;
+	private String nombreDia;
 	private int nivel;
 	private int lugar;
 	private int tipoEntreno;
 	private String email;
 
 	// Con esto obtengo los valores del PantallaDatos.
-	public PlanEntrenamiento(byte nivel, byte lugar, byte tipoEntreno, String dia,String email) throws SQLException {
+	public PlanEntrenamiento(byte nivel, byte lugar, byte tipoEntreno, String nombreDia,String email) throws SQLException {
 
 		HashMap<String, Object> hs = new HashMap<String, Object>();
-		hs.put("nombre", dia);
+		hs.put("nombre", nombreDia);
 		hs.put("nivel", nivel);
 		hs.put("lugar", lugar);
 		hs.put("tipoEntreno", tipoEntreno);
@@ -36,7 +37,7 @@ public class PlanEntrenamiento {
 		this.nivel = nivel;
 		this.lugar = lugar;
 		this.tipoEntreno = tipoEntreno;
-		this.entrenamientos = dia;
+		this.nombreDia = nombreDia;
 		this.email=email;
 	}
 	public PlanEntrenamiento(String email) throws SQLException {
@@ -52,7 +53,7 @@ public class PlanEntrenamiento {
 		String resultadoEmail=(String)ret.get(0);
 		if(resultadoEmail.equals(email)) {
 			this.email=resultadoEmail;
-			this.entrenamientos=(String)ret.get(1);
+			this.nombreDia=(String)ret.get(1);
 			this.nivel=(Integer)ret.get(2);
 			this.lugar=(int)ret.get(3);
 			this.tipoEntreno=(int)ret.get(4);
@@ -61,13 +62,25 @@ public class PlanEntrenamiento {
 		}
 		
 	}
+	public PlanEntrenamiento(byte nivel, byte lugar, byte tipoEntreno, String nombreDia,String email,ArrayList<Entrenamiento> entreno) {
+		this.nivel=nivel;
+		this.lugar=lugar;
+		this.tipoEntreno=tipoEntreno;
+		this.nombreDia=nombreDia;
+		this.email=email;
+		this.entreno=entreno;
+	}
+	public PlanEntrenamiento(ArrayList<Entrenamiento> entreno) {
+		
+		this.entreno=entreno;
+	}
 
 	public String getEntrenamientos() {
-		return entrenamientos;
+		return nombreDia;
 	}
 
 	public void setEntrenamientos(String entrenamientos) {
-		this.entrenamientos = entrenamientos;
+		this.nombreDia = entrenamientos;
 	}
 
 	public int getNivel() {
@@ -93,11 +106,14 @@ public class PlanEntrenamiento {
 	public void setTipoEntreno(int tipoEntreno) {
 		this.tipoEntreno = tipoEntreno;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "PlanEntrenamiento [entrenamientos=" + entrenamientos + ", nivel=" + nivel + ", lugar=" + lugar
-				+ ", tipoEntreno=" + tipoEntreno + "]";
+		return super.toString()+"PlanEntrenamiento= entreno: " + entreno + "\nentrenamientos: " + nombreDia 
+				+ "\nnivel: " + nivel + "\nlugar: " + lugar + "\ntipoEntreno: " +
+				tipoEntreno + "\nemail: " + email + "]";
 	}
+
+	
 
 }

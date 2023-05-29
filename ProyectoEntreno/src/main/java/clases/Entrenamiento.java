@@ -7,7 +7,7 @@ public class Entrenamiento extends ElementoConNombre{
 	private ArrayList<Series> ejercicios;
 	private String descripcion;
 	
-	public Entrenamiento(String nombre, ArrayList<Series> ejercicios, String descripcion) {
+	public Entrenamiento(String nombre,  String descripcion, ArrayList<Series> ejercicios) {
 		super(nombre);
 		this.ejercicios = ejercicios;
 		this.descripcion = descripcion;
@@ -32,7 +32,7 @@ public class Entrenamiento extends ElementoConNombre{
 
 	@Override
 	public String toString() {
-		return "Entrenamiento [ejercicios=" + ejercicios + ", descripcion=" + descripcion + "]";
+		return super.toString()+"Entrenamiento= ejercicios: " + ejercicios + ", descripcion=" + descripcion + "\n";
 	}
 	
 	

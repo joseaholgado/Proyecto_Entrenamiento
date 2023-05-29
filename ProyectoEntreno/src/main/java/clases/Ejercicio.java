@@ -36,15 +36,18 @@ public class Ejercicio extends ElementoConNombre{
 		
 		
 	}
+	public Ejercicio() {
+		
+	}
 
 
-	public Ejercicio(NivelUsuario nivelUsuario, TipoEjercicio tipoEjercicio) {
+	/*public Ejercicio(NivelUsuario nivelUsuario, TipoEjercicio tipoEjercicio) {
 		this.setNombre("Press Banca");
 		this.explicacion="Levantar barra en banco plano";
 		this.musculo=Musculo.PECTORAL;
 		this.nivelUsuario=nivelUsuario;
 		this.tipoEjercicio=tipoEjercicio;
-	}
+	}*/
 
 	public String getExplicacion() {
 		return explicacion;
@@ -88,8 +91,8 @@ public class Ejercicio extends ElementoConNombre{
 
 	@Override
 	public String toString() {
-		return "Ejercicio [explicacion=" + explicacion + ", imagen=" + imagen + ", musculo=" + musculo
-				+ ", nivelUsuario=" + nivelUsuario + ", tipoEjercicio=" + tipoEjercicio + "]";
+		return super.toString()+"Ejercicio= explicacion: " + explicacion + "\nimagen: " + imagen + "\nMusculo:" + musculo
+				+ "\nNivel: " + nivelUsuario + "\nTipo ejercicio: " + tipoEjercicio + "\n";
 	}
 	
 	

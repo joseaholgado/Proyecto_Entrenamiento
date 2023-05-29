@@ -16,6 +16,10 @@ public class Gimnasio extends Ejercicio{
 		super(nombre, explicacion, imagen, musculo, nivelUsuario, tipoEjercicio);
 		this.material = material;
 	}
+	public Gimnasio (ArrayList<Material> material) {
+		super();
+		this.material=material;
+	}
 
 	public ArrayList<Material> getMaterial() {
 		return material;
@@ -27,7 +31,7 @@ public class Gimnasio extends Ejercicio{
 
 	@Override
 	public String toString() {
-		return "Gimnasio [material=" + material + "]";
+		return super.toString()+"Gimnasio: nombre: "+nombre+"\nmaterial: " + material;
 	}
 
 	
