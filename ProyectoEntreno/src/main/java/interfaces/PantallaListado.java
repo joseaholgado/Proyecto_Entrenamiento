@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import clases.Ejercicio;
 import clases.Entrenamiento;
 import clases.Usuario;
 import utilidades.DAO;
@@ -16,6 +17,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
 
 public class PantallaListado extends JPanel{
 	private Ventana ventana;
@@ -39,6 +42,7 @@ public class PantallaListado extends JPanel{
 	});
 	panel.add(btnAtras);
 	
+	//////////Pantalla interior
 	
 	JScrollPane lista = new JScrollPane();
 	add(lista, BorderLayout.CENTER);
@@ -47,17 +51,34 @@ public class PantallaListado extends JPanel{
 	lista.setViewportView(contenedorElemento);
 	contenedorElemento.setLayout(new BoxLayout(contenedorElemento, BoxLayout.Y_AXIS));
 
-	/*try {
-		ArrayList<Usuario> usuarios = ventana.usuarioLogado.getTodos();
-		for(byte i=0;i<usuarios.size();i++) {
-			System.out.println(usuarios.get(i));
-		}
+	ArrayList<Object>listaEjercicio=new ArrayList<Object>();
+	LinkedHashSet<String> lhs=new LinkedHashSet<String>();
+	lhs.add("titulo");
+	lhs.add("nombre");
+	lhs.add("explicacion");
+	lhs.add("imagen");
+	HashMap<String, Object>hs=new HashMap();
+	
+	try {
+		listaEjercicio=DAO.consultar("listaEjercicio", lhs, hs);
 	} catch (SQLException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
-
-	contenedorElemento.add(new ElementoListaUsuario(ventana, ventana.usuarioLogado));*/
+	
+	//For para que me repita objetos del panel en pantalla
+	for (byte i=0;i<listaEjercicio.size();i+=4) {
+		String titulo=(String)listaEjercicio.get(i);
+		String nombre=(String)listaEjercicio.get(i+1);
+		String explicacion=(String)listaEjercicio.get(i+2);
+		String imagen=(String)listaEjercicio.get(i+3);
+		
+		Ejercicio ej=new Ejercicio(titulo,nombre,explicacion,imagen);
+		contenedorElemento.add(new ElementoListaUsuario(ventana,ej));
+		
+		
+	}
+	
 
 }
 }

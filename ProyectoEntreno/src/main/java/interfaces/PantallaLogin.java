@@ -195,21 +195,6 @@ public class PantallaLogin extends JPanel{
 		gbc_btnRegistro.gridy = 7;
 		add(btnRegistro, gbc_btnRegistro);
 		
-		JButton btnLista = new JButton("Lista Ejercicios");
-		btnLista.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ventana.cambiarAPantalla(PantallaEjercicioMiguel.class);
-			}
-		});
-		btnLista.setFont(new Font("Arial", Font.PLAIN, 15));
-		GridBagConstraints gbc_btnLista = new GridBagConstraints();
-		gbc_btnLista.anchor = GridBagConstraints.SOUTH;
-		gbc_btnLista.insets = new Insets(0, 0, 0, 5);
-		gbc_btnLista.gridx = 2;
-		gbc_btnLista.gridy = 8;
-		add(btnLista, gbc_btnLista);
-		
 		
 	
 		

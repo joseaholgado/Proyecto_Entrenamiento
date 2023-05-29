@@ -9,21 +9,24 @@ import clases.Entrenamiento;
 import clases.PlanEntrenamiento;
 import clases.Usuario;
 
-public class Ventana extends JFrame{
+public class Ventana extends JFrame {
 	protected Usuario usuarioLogado;
 	protected PlanEntrenamiento plan;
 	protected Entrenamiento entreno;
+
 	public Ventana() {
-		this.setSize(680,445); //Lo hace visible
-		this.setTitle("Entreno Z");//Es el título de la ventana
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);//Nos cierra la ejecucion del programa tras cerrar la ventana
+		this.setSize(680, 445); // Lo hace visible
+		this.setTitle("Entreno Z");// Es el título de la ventana
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);// Nos cierra la ejecucion del programa tras cerrar la ventana
 		this.setLocationRelativeTo(null);//
 		this.setContentPane(new PantallaLogin(this));
 		this.setIconImage(new ImageIcon("./Icono.jpg").getImage());
-		this.setVisible(true);//Para que sea visible la ventana
+		this.setVisible(true);// Para que sea visible la ventana
 	}
+
 	public void cambiarAPantalla(Class<?> clase) {
 		this.getContentPane().setVisible(false);
+		
 		if (clase.equals(PantallaLogin.class)) {
 			this.setContentPane(new PantallaLogin(this));
 		}
@@ -44,14 +47,11 @@ public class Ventana extends JFrame{
 			
 		}else if(clase.equals(PantallaEntreno.class)) {
 			this.setContentPane(new PantallaEntreno(this));
-		}else if(clase.equals(PantallaEjercicioMiguel.class)) {
-			this.setContentPane(new PantallaEjercicioMiguel(this));
-		}else if(clase.equals(PantallaEjercicioListado.class)) {
-				this.setContentPane(new PantallaEjercicioListado(this));
+			
 		this.getContentPane().setVisible(true);
 		
 	}
 
 	}
-	
+
 }

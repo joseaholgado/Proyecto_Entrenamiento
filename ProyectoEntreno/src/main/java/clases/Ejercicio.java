@@ -10,6 +10,8 @@ import enumeration.TipoEjercicio;
 public class Ejercicio extends ElementoConNombre{
 
 	private String explicacion;
+	private String imagenLista;
+	private String titulo;
 	private BufferedImage imagen;
 	private Musculo musculo;
 	private NivelUsuario nivelUsuario; 
@@ -36,59 +38,60 @@ public class Ejercicio extends ElementoConNombre{
 		
 		
 	}
+	//Constructor para Ejercicio Listado
+	public Ejercicio (String nombre,String titulo, String explicacion, String imagenLista) {
+		super(nombre);
+		this.titulo=titulo;
+		this.explicacion=explicacion;
+		this.imagenLista=imagenLista;
+	}
+	//Para que no proteste la clase Gimnasio
 	public Ejercicio() {
 		
 	}
 
-
-	/*public Ejercicio(NivelUsuario nivelUsuario, TipoEjercicio tipoEjercicio) {
-		this.setNombre("Press Banca");
-		this.explicacion="Levantar barra en banco plano";
-		this.musculo=Musculo.PECTORAL;
-		this.nivelUsuario=nivelUsuario;
-		this.tipoEjercicio=tipoEjercicio;
-	}*/
-
 	public String getExplicacion() {
 		return explicacion;
 	}
-
 	public void setExplicacion(String explicacion) {
 		this.explicacion = explicacion;
 	}
-
+	public String getImagenLista() {
+		return imagenLista;
+	}
+	public void setImagenLista(String imagenLista) {
+		this.imagenLista = imagenLista;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 	public BufferedImage getImagen() {
 		return imagen;
 	}
-
 	public void setImagen(BufferedImage imagen) {
 		this.imagen = imagen;
 	}
-
 	public Musculo getMusculo() {
 		return musculo;
 	}
-
 	public void setMusculo(Musculo musculo) {
 		this.musculo = musculo;
 	}
-
 	public NivelUsuario getNivelUsuario() {
 		return nivelUsuario;
 	}
-
 	public void setNivelUsuario(NivelUsuario nivelUsuario) {
 		this.nivelUsuario = nivelUsuario;
 	}
-
 	public TipoEjercicio getTipoEjercicio() {
 		return tipoEjercicio;
 	}
-
 	public void setTipoEjercicio(TipoEjercicio tipoEjercicio) {
 		this.tipoEjercicio = tipoEjercicio;
 	}
-
 	@Override
 	public String toString() {
 		return super.toString()+"Ejercicio= explicacion: " + explicacion + "\nimagen: " + imagen + "\nMusculo:" + musculo
