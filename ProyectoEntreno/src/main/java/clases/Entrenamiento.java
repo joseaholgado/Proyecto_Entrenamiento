@@ -2,18 +2,17 @@ package clases;
 
 import java.util.ArrayList;
 
-public class Entrenamiento extends ElementoConNombre{
+public class Entrenamiento extends ElementoConNombre {
 
 	private ArrayList<Series> ejercicios;
 	private String descripcion;
-	
-	public Entrenamiento(String nombre,  String descripcion, ArrayList<Series> ejercicios) {
+
+	public Entrenamiento(String nombre, String descripcion, ArrayList<Series> ejercicios) {
 		super(nombre);
 		this.ejercicios = ejercicios;
 		this.descripcion = descripcion;
 	}
-	
-	
+
 	public ArrayList<Series> getEjercicios() {
 		return ejercicios;
 	}
@@ -32,9 +31,7 @@ public class Entrenamiento extends ElementoConNombre{
 
 	@Override
 	public String toString() {
-		return super.toString()+"Entrenamiento= ejercicios: " + ejercicios + ", descripcion=" + descripcion + "\n";
+		return super.toString() + "Entrenamiento: \nejercicios: " + ejercicios + "\ndescripcion: " + descripcion + "\n";
 	}
-	
-	
-	
+
 }

@@ -11,6 +11,9 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 
 import javax.swing.JLabel;
+
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JPanel;
@@ -19,7 +22,9 @@ import javax.swing.JTextArea;
 
 public class VentanaEmergente extends JDialog {
 
-	public VentanaEmergente(String titulo, String nombre, String descripcion, String imagen) {
+	public VentanaEmergente(String titulo, String nombre, String descripcion, String imagen, String explicacion) {
+
+		setIconImage(new ImageIcon("./Icono.jpg").getImage());
 
 		setTitle("Detalles del Ejercicio");
 		setSize(1000, 400);
@@ -33,7 +38,15 @@ public class VentanaEmergente extends JDialog {
 				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		getContentPane().setLayout(gridBagLayout);
-		
+
+		JLabel etNombre = new JLabel("");
+		etNombre.setText(nombre);
+		GridBagConstraints gbc_etNombre = new GridBagConstraints();
+		gbc_etNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_etNombre.gridx = 8;
+		gbc_etNombre.gridy = 1;
+		getContentPane().add(etNombre, gbc_etNombre);
+
 		JLabel etTitulo = new JLabel("");
 		etTitulo.setText(titulo);
 		GridBagConstraints gbc_etTitulo = new GridBagConstraints();
@@ -41,14 +54,6 @@ public class VentanaEmergente extends JDialog {
 		gbc_etTitulo.gridx = 8;
 		gbc_etTitulo.gridy = 2;
 		getContentPane().add(etTitulo, gbc_etTitulo);
-
-		JLabel etNombre = new JLabel("");
-		etNombre.setText(nombre);
-		GridBagConstraints gbc_etNombre = new GridBagConstraints();
-		gbc_etNombre.insets = new Insets(0, 0, 5, 5);
-		gbc_etNombre.gridx = 8;
-		gbc_etNombre.gridy = 3;
-		getContentPane().add(etNombre, gbc_etNombre);
 
 		BufferedImage imagen1;
 
@@ -89,10 +94,9 @@ public class VentanaEmergente extends JDialog {
 		}
 
 		getContentPane().add(etImagen, gbc_etImagen);
-		
+
 		JTextArea textArea = new JTextArea();
-		textArea.txt
-		textArea.setEnabled(false);
+		textArea.setText(explicacion);
 		textArea.setEditable(false);
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
 		gbc_textArea.insets = new Insets(0, 0, 5, 5);

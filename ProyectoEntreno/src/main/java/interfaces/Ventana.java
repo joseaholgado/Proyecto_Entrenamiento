@@ -26,31 +26,28 @@ public class Ventana extends JFrame {
 
 	public void cambiarAPantalla(Class<?> clase) {
 		this.getContentPane().setVisible(false);
-		
+
 		if (clase.equals(PantallaLogin.class)) {
 			this.setContentPane(new PantallaLogin(this));
-		}
-		else if (clase.equals(PantallaRegistro.class)) {
+		} else if (clase.equals(PantallaRegistro.class)) {
 			this.setContentPane(new PantallaRegistro(this));
-		}
-		else if (clase.equals(PantallaExito.class)) {
+		} else if (clase.equals(PantallaExito.class)) {
 			this.setContentPane(new PantallaExito(this));
-		}
-		else if (clase.equals(PantallaDatos.class)) {
+		} else if (clase.equals(PantallaDatos.class)) {
 			this.setContentPane(new PantallaDatos(this));
-			
-		}else if(clase.equals(PantallaPanel.class)) {
+
+		} else if (clase.equals(PantallaPanel.class)) {
 			this.setContentPane(new PantallaPanel(this));
-			
-		}else if(clase.equals(PantallaListado.class)) {
+
+		} else if (clase.equals(PantallaListado.class)) {
 			this.setContentPane(new PantallaListado(this));
-			
-		}else if(clase.equals(PantallaEntreno.class)) {
+
+		} else if (clase.equals(PantallaEntreno.class)) {
 			this.setContentPane(new PantallaEntreno(this));
-			
-		this.getContentPane().setVisible(true);
-		
-	}
+
+			this.getContentPane().setVisible(true);
+
+		}
 
 	}
 

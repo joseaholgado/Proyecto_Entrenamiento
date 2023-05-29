@@ -16,24 +16,24 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 
-public class PantallaPanel extends JPanel{
-	
+public class PantallaPanel extends JPanel {
+
 	private Ventana ventana;
 	private PlanEntrenamiento plan;
-	public PantallaPanel( Ventana v ){
-		this.ventana=v;
-		//this.plan=planEntreno;
+
+	public PantallaPanel(Ventana v) {
+		this.ventana = v;
+
 		System.out.println(plan);
-		//plan.calcuEntreno();
-		
+
 		setBackground(Color.GREEN);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-		
+
 		JLabel etTítulo = new JLabel("¡Bienvenido!");
 		etTítulo.setFont(new Font("Arial", Font.PLAIN, 25));
 		GridBagConstraints gbc_etTítulo = new GridBagConstraints();
@@ -41,7 +41,7 @@ public class PantallaPanel extends JPanel{
 		gbc_etTítulo.gridx = 2;
 		gbc_etTítulo.gridy = 2;
 		add(etTítulo, gbc_etTítulo);
-		
+
 		JButton btnListado = new JButton("Lista Ejercicios");
 		btnListado.addMouseListener(new MouseAdapter() {
 			@Override
@@ -49,7 +49,7 @@ public class PantallaPanel extends JPanel{
 				ventana.cambiarAPantalla(PantallaListado.class);
 			}
 		});
-		
+
 		JButton btnPlan = new JButton("Mostrar Entreno");
 		btnPlan.addMouseListener(new MouseAdapter() {
 			@Override
@@ -67,11 +67,7 @@ public class PantallaPanel extends JPanel{
 		gbc_btnListado.gridx = 3;
 		gbc_btnListado.gridy = 7;
 		add(btnListado, gbc_btnListado);
-		
-		
+
 	}
 
-	
-	
-	
 }

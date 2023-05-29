@@ -41,37 +41,39 @@ import java.time.LocalDate;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-public class PantallaRegistro extends JPanel{
+
+public class PantallaRegistro extends JPanel {
 
 	private Ventana ventana;
 	private JTextField campoNombre;
 	private JTextField campoCorreo;
 	private JPasswordField campoContraseña;
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
 		try {
-			BufferedImage imagen=ImageIO.read(new File("./Registro.png"));
-			g.drawImage(imagen, 0,0,this );
-			g.drawImage(imagen, 0, 0, this.getWidth(), this.getHeight(), new Color(0 ,0,0),null);
+			BufferedImage imagen = ImageIO.read(new File("./Registro.png"));
+			g.drawImage(imagen, 0, 0, this);
+			g.drawImage(imagen, 0, 0, this.getWidth(), this.getHeight(), new Color(0, 0, 0), null);
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
-	
+
 	public PantallaRegistro(Ventana v) {
 		this.ventana = v;
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/mm/dd");
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{51, 194, 210, 333, 0};
-		gridBagLayout.rowHeights = new int[]{36, 33, 13, 19, 13, 19, 18, 67, 32, 46, 29, 2, 50, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] { 51, 194, 210, 333, 0 };
+		gridBagLayout.rowHeights = new int[] { 36, 33, 13, 19, 13, 19, 18, 67, 32, 46, 29, 2, 50, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-		
+
 		JLabel etRegistro = new JLabel("¡Regístrate y cambiate!");
 		etRegistro.setFont(new Font("Arial", Font.ITALIC, 18));
 		GridBagConstraints gbc_etRegistro = new GridBagConstraints();
@@ -80,7 +82,7 @@ public class PantallaRegistro extends JPanel{
 		gbc_etRegistro.gridx = 3;
 		gbc_etRegistro.gridy = 0;
 		add(etRegistro, gbc_etRegistro);
-		
+
 		JLabel etNombre = new JLabel("Nombre");
 		etNombre.setFont(new Font("Arial", Font.ITALIC, 12));
 		GridBagConstraints gbc_etNombre = new GridBagConstraints();
@@ -89,7 +91,7 @@ public class PantallaRegistro extends JPanel{
 		gbc_etNombre.gridx = 3;
 		gbc_etNombre.gridy = 1;
 		add(etNombre, gbc_etNombre);
-		
+
 		campoNombre = new JTextField();
 		campoNombre.addMouseListener(new MouseAdapter() {
 			@Override
@@ -106,7 +108,7 @@ public class PantallaRegistro extends JPanel{
 		gbc_campoNombre.gridy = 2;
 		add(campoNombre, gbc_campoNombre);
 		campoNombre.setColumns(10);
-		
+
 		JLabel etCorreo = new JLabel("Correo electrónico");
 		etCorreo.setFont(new Font("Arial", Font.ITALIC, 12));
 		GridBagConstraints gbc_etCorreo = new GridBagConstraints();
@@ -115,7 +117,7 @@ public class PantallaRegistro extends JPanel{
 		gbc_etCorreo.gridx = 3;
 		gbc_etCorreo.gridy = 3;
 		add(etCorreo, gbc_etCorreo);
-		
+
 		campoCorreo = new JTextField();
 		campoCorreo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -132,7 +134,7 @@ public class PantallaRegistro extends JPanel{
 		gbc_campoCorreo.gridy = 4;
 		add(campoCorreo, gbc_campoCorreo);
 		campoCorreo.setColumns(10);
-		
+
 		JLabel etFecha = new JLabel("Fecha de nacimiento");
 		etFecha.setFont(new Font("Arial", Font.ITALIC, 12));
 		GridBagConstraints gbc_etFecha = new GridBagConstraints();
@@ -141,7 +143,7 @@ public class PantallaRegistro extends JPanel{
 		gbc_etFecha.gridx = 3;
 		gbc_etFecha.gridy = 5;
 		add(etFecha, gbc_etFecha);
-		
+
 		final JCalendar caleFecha = new JCalendar();
 		GridBagConstraints gbc_caleFecha = new GridBagConstraints();
 		gbc_caleFecha.gridheight = 4;
@@ -150,7 +152,7 @@ public class PantallaRegistro extends JPanel{
 		gbc_caleFecha.gridx = 3;
 		gbc_caleFecha.gridy = 6;
 		add(caleFecha, gbc_caleFecha);
-		
+
 		JLabel etContraseña = new JLabel("Contraseña");
 		etContraseña.setFont(new Font("Arial", Font.ITALIC, 12));
 		GridBagConstraints gbc_etContraseña = new GridBagConstraints();
@@ -158,7 +160,7 @@ public class PantallaRegistro extends JPanel{
 		gbc_etContraseña.gridx = 3;
 		gbc_etContraseña.gridy = 10;
 		add(etContraseña, gbc_etContraseña);
-		
+
 		campoContraseña = new JPasswordField();
 		GridBagConstraints gbc_campoContraseña = new GridBagConstraints();
 		gbc_campoContraseña.insets = new Insets(0, 0, 5, 0);
@@ -166,56 +168,48 @@ public class PantallaRegistro extends JPanel{
 		gbc_campoContraseña.gridx = 3;
 		gbc_campoContraseña.gridy = 11;
 		add(campoContraseña, gbc_campoContraseña);
-		
+
 		JButton btnRegistro = new JButton("Pulsa para registrarte");
 		btnRegistro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String nombre=campoNombre.getText();
-				String email=campoCorreo.getText();
-				String contraseña=new String (campoContraseña.getPassword());
-				String contraseñaUsuario=null;
-				
-				Date fechaDate=new Date (caleFecha.getDate().getTime());	
-				SimpleDateFormat formatoFecha=new SimpleDateFormat("d/MM/yyyy");
+				String nombre = campoNombre.getText();
+				String email = campoCorreo.getText();
+				String contraseña = new String(campoContraseña.getPassword());
+				String contraseñaUsuario = null;
+
+				Date fechaDate = new Date(caleFecha.getDate().getTime());
+				SimpleDateFormat formatoFecha = new SimpleDateFormat("d/MM/yyyy");
 				String fechaFormateada = formatoFecha.format(fechaDate);
 				System.out.println(fechaFormateada);
 				LocalDate fecha = caleFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				System.out.println(fecha);
-				
+
 				try {
-					ventana.usuarioLogado=new Usuario(nombre, email, contraseña, fecha);
-					JOptionPane.showMessageDialog(ventana, "Su registro ha sido exitoso "+ventana.usuarioLogado.getNombre(), "Registro exitoso",
+					ventana.usuarioLogado = new Usuario(nombre, email, contraseña, fecha);
+					JOptionPane.showMessageDialog(ventana,
+							"Su registro ha sido exitoso " + ventana.usuarioLogado.getNombre(), "Registro exitoso",
 							JOptionPane.INFORMATION_MESSAGE);
-					//Usuario usuarioRegistro=new Usuario(nombre, email, contraseña, fecha);
+					// Usuario usuarioRegistro=new Usuario(nombre, email, contraseña, fecha);
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Registro fallido",
 							JOptionPane.INFORMATION_MESSAGE);
 					e1.printStackTrace();
-				}catch ( FechaConLetras e1) {
+				} catch (FechaConLetras e1) {
 					JOptionPane.showMessageDialog(ventana, "Has introducido letras en la fecha ", "Registro fallido",
 							JOptionPane.INFORMATION_MESSAGE);
 					e1.printStackTrace();
 				}
 				ventana.cambiarAPantalla(PantallaExito.class);
-				
+
 			}
 		});
-		
-		
+
 		btnRegistro.setFont(new Font("Arial", Font.ITALIC, 15));
 		GridBagConstraints gbc_btnRegistro = new GridBagConstraints();
 		gbc_btnRegistro.gridx = 3;
 		gbc_btnRegistro.gridy = 12;
 		add(btnRegistro, gbc_btnRegistro);
-		
-		
-		
-		
-		
-		
-		
-		
-	
-}
+
+	}
 }
