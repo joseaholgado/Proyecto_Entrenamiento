@@ -8,7 +8,7 @@ import java.util.LinkedHashSet;
 
 import exception.UsuarioNoExisteException;
 import exception.ContraseñaInvalidaExcepcion;
-import exception.FechaConLetras;
+import exception.NombreConNumerosException;
 import utilidades.DAO;
 
 public class Usuario extends ElementoConNombre {
@@ -28,7 +28,7 @@ public class Usuario extends ElementoConNombre {
 	}
 
 	public Usuario(String nombre, String email, String contraseña, LocalDate fechaNacimiento)
-			throws SQLException, FechaConLetras {
+			throws SQLException , NombreConNumerosException{
 		super(nombre);
 		HashMap<String, Object> hs = new HashMap<String, Object>();
 		hs.put("nombre", nombre);

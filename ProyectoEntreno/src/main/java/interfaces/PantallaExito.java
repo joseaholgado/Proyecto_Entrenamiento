@@ -1,6 +1,9 @@
 package interfaces;
 
 import javax.swing.JPanel;
+
+import auxiliares.interfaces.ReproductorAudio;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -12,10 +15,18 @@ import java.awt.event.MouseEvent;
 public class PantallaExito extends JPanel {
 
 	private Ventana ventana;
+	private ReproductorAudio reproductor;
 
 	public PantallaExito(Ventana v) {
 		this.ventana = v;
 		setLayout(null);
+		
+		// ----------------------Musica------------------//
+
+				reproductor = new ReproductorAudio();
+				reproductor.reproducir("./Aplausos.wav");
+
+				// -----------------------------------------------------
 
 		JLabel etTitulo = new JLabel("¡Te has registrado exitosamente!");
 		etTitulo.setForeground(Color.WHITE);

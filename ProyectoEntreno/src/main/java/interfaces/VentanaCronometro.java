@@ -3,11 +3,17 @@ package interfaces;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,6 +27,20 @@ public class VentanaCronometro extends JPanel {
     private Ventana ventana;
     private JLabel etReloj;
 
+    @Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paintComponent(g);
+		try {
+			BufferedImage imagen = ImageIO.read(new File("./Crono.png"));
+			g.drawImage(imagen, 0, 0, this);
+			g.drawImage(imagen, 0, 0, this.getWidth(), this.getHeight(), new Color(0, 0, 0), null);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
+    
     private void actualizarEtiquetaTiempo() {
     	String texto = (horas <= 9 ? "0" : "") + horas + ":" + (minutos <= 9 ? "0" : "") + minutos + ":"
                 + (segundos <= 9 ? "0" : "") + segundos + ":" + (centesimasSegundos <= 9 ? "0" : "")
@@ -45,6 +65,71 @@ public class VentanaCronometro extends JPanel {
         gbc_etTitulo.gridx = 1;
         gbc_etTitulo.gridy = 1;
         add(etTitulo, gbc_etTitulo);
+        
+                JButton btnIniciar = new JButton("Iniciar");
+                GridBagConstraints gbc_btnIniciar = new GridBagConstraints();
+                gbc_btnIniciar.insets = new Insets(0, 0, 5, 5);
+                gbc_btnIniciar.gridx = 0;
+                gbc_btnIniciar.gridy = 2;
+                add(btnIniciar, gbc_btnIniciar);
+                
+                        btnIniciar.addActionListener(e -> {
+                            if (tiempo == null) {
+                                tiempo = new Timer();
+                                tiempo.scheduleAtFixedRate(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        centesimasSegundos++;
+                                        if (centesimasSegundos >= 100) {
+                                            centesimasSegundos = 0;
+                                            segundos++;
+                                            if (segundos >= 60) {
+                                                segundos = 0;
+                                                minutos++;
+                                                if (minutos >= 60) {
+                                                    minutos = 0;
+                                                    horas++;
+                                                }
+                                            }
+                                        }
+                                        actualizarEtiquetaTiempo();
+                                    }
+                                }, 10, 10);
+                            }
+                        });
+        
+                JButton btnPausar = new JButton("Pausar");
+                GridBagConstraints gbc_btnPausar = new GridBagConstraints();
+                gbc_btnPausar.insets = new Insets(0, 0, 5, 5);
+                gbc_btnPausar.gridx = 1;
+                gbc_btnPausar.gridy = 2;
+                add(btnPausar, gbc_btnPausar);
+                
+                        btnPausar.addActionListener(e -> {
+                            if (tiempo != null) {
+                                tiempo.cancel();
+                                tiempo = null;
+                            }
+                        });
+        
+                JButton btnDetener = new JButton("Detener");
+                GridBagConstraints gbc_btnDetener = new GridBagConstraints();
+                gbc_btnDetener.insets = new Insets(0, 0, 5, 5);
+                gbc_btnDetener.gridx = 2;
+                gbc_btnDetener.gridy = 2;
+                add(btnDetener, gbc_btnDetener);
+                
+                        btnDetener.addActionListener(e -> {
+                            if (tiempo != null) {
+                                tiempo.cancel();
+                                tiempo = null;
+                            }
+                            centesimasSegundos = 0;
+                            segundos = 0;
+                            minutos = 0;
+                            horas = 0;
+                            actualizarEtiquetaTiempo();
+                        });
 
         etReloj = new JLabel("00:00:00:00");
         etReloj.setFont(new Font("Tahoma", Font.PLAIN, 35));
@@ -53,69 +138,5 @@ public class VentanaCronometro extends JPanel {
         gbc_etReloj.gridx = 1;
         gbc_etReloj.gridy = 3;
         add(etReloj, gbc_etReloj);
-
-        JButton btnIniciar = new JButton("Iniciar");
-        GridBagConstraints gbc_btnIniciar = new GridBagConstraints();
-        gbc_btnIniciar.insets = new Insets(0, 0, 0, 5);
-        gbc_btnIniciar.gridx = 3;
-        gbc_btnIniciar.gridy = 3;
-        add(btnIniciar, gbc_btnIniciar);
-
-        JButton btnPausar = new JButton("Pausar");
-        GridBagConstraints gbc_btnPausar = new GridBagConstraints();
-        gbc_btnPausar.insets = new Insets(0, 0, 0, 5);
-        gbc_btnPausar.gridx = 4;
-        gbc_btnPausar.gridy = 3;
-        add(btnPausar, gbc_btnPausar);
-
-        JButton btnDetener = new JButton("Detener");
-        GridBagConstraints gbc_btnDetener = new GridBagConstraints();
-        gbc_btnDetener.gridx = 5;
-        gbc_btnDetener.gridy = 3;
-        add(btnDetener, gbc_btnDetener);
-
-        btnIniciar.addActionListener(e -> {
-            if (tiempo == null) {
-                tiempo = new Timer();
-                tiempo.scheduleAtFixedRate(new TimerTask() {
-                    @Override
-                    public void run() {
-                        centesimasSegundos++;
-                        if (centesimasSegundos >= 100) {
-                            centesimasSegundos = 0;
-                            segundos++;
-                            if (segundos >= 60) {
-                                segundos = 0;
-                                minutos++;
-                                if (minutos >= 60) {
-                                    minutos = 0;
-                                    horas++;
-                                }
-                            }
-                        }
-                        actualizarEtiquetaTiempo();
-                    }
-                }, 10, 10);
-            }
-        });
-
-        btnPausar.addActionListener(e -> {
-            if (tiempo != null) {
-                tiempo.cancel();
-                tiempo = null;
-            }
-        });
-
-        btnDetener.addActionListener(e -> {
-            if (tiempo != null) {
-                tiempo.cancel();
-                tiempo = null;
-            }
-            centesimasSegundos = 0;
-            segundos = 0;
-            minutos = 0;
-            horas = 0;
-            actualizarEtiquetaTiempo();
-        });
     }
 }

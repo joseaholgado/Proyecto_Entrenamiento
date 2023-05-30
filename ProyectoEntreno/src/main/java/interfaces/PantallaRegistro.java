@@ -10,7 +10,7 @@ import java.awt.Graphics;
 import javax.swing.JTextField;
 
 import clases.Usuario;
-import exception.FechaConLetras;
+import exception.NombreConNumerosException;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -186,22 +186,30 @@ public class PantallaRegistro extends JPanel {
 				System.out.println(fecha);
 
 				try {
+					if (nombre.matches(".*\\d.*")) {
+						throw new NombreConNumerosException("El nombre no puede contener números");
+					}
+
 					ventana.usuarioLogado = new Usuario(nombre, email, contraseña, fecha);
 					JOptionPane.showMessageDialog(ventana,
 							"Su registro ha sido exitoso " + ventana.usuarioLogado.getNombre(), "Registro exitoso",
 							JOptionPane.INFORMATION_MESSAGE);
+					ventana.cambiarAPantalla(PantallaExito.class);
 					// Usuario usuarioRegistro=new Usuario(nombre, email, contraseña, fecha);
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Registro fallido",
 							JOptionPane.INFORMATION_MESSAGE);
 					e1.printStackTrace();
-				} catch (FechaConLetras e1) {
-					JOptionPane.showMessageDialog(ventana, "Has introducido letras en la fecha ", "Registro fallido",
-							JOptionPane.INFORMATION_MESSAGE);
-					e1.printStackTrace();
+				} catch (NombreConNumerosException n) {
+					JOptionPane.showMessageDialog(ventana, n.getMessage(), "Nombre inválido",
+							JOptionPane.ERROR_MESSAGE);
+				} catch (Exception e3) {
+					// Captura de cualquier otra excepción no esperada
+					JOptionPane.showMessageDialog(ventana, "Error en el registro: " + e3.getMessage(), "Error",
+							JOptionPane.ERROR_MESSAGE);
+					e3.printStackTrace();
 				}
-				ventana.cambiarAPantalla(PantallaExito.class);
-
+				
 			}
 		});
 

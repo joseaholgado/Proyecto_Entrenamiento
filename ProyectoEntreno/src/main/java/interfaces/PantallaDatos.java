@@ -269,17 +269,21 @@ public class PantallaDatos extends JPanel {
 		btnRecivirDatos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				if (btnZona.getSelection() != null && btnNivel.getSelection() 
+						!= null && btnTipoEntreno.getSelection() != null) {
 				try {
 					planE = new PlanEntrenamiento(nivel, lugar, tipoEntreno, "lunes", ventana.usuarioLogado.getEmail());
+					System.out.println(planE);
+					ventana.cambiarAPantalla(PantallaLogin.class);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				System.out.println(planE);
-				ventana.cambiarAPantalla(PantallaLogin.class);
-
-				System.out.println();
+				}else {
+					 JOptionPane.showMessageDialog(ventana, "Debes seleccionar todas las opciones antes de continuar.",
+							 "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		btnRecivirDatos.setHorizontalAlignment(SwingConstants.LEFT);

@@ -158,12 +158,12 @@ public class PantallaLogin extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (UsuarioNoExisteException e1) {
-					JOptionPane.showMessageDialog(ventana, "Login Error" + ventana.usuarioLogado.getNombre(),
-							"Nombre incorrecto", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(ventana, "No estás registrado: " + correo,
+							"Error en email", JOptionPane.ERROR_MESSAGE);
 					e1.printStackTrace();
 				} catch (ContraseñaInvalidaExcepcion e1) {
-					JOptionPane.showMessageDialog(ventana, "Login Error" + ventana.usuarioLogado.getNombre(),
-							"Contraseña incorrecta", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(ventana, "Contraseña incorrecta: ***",
+							"Error en contraseña", JOptionPane.ERROR_MESSAGE);
 					e1.printStackTrace();
 				}
 

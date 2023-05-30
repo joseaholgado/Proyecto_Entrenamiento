@@ -70,18 +70,7 @@ public class PantallaPanel extends JPanel {
 							public void mouseClicked(MouseEvent e) {
 								ventana.cambiarAPantalla(PantallaEntreno.class);
 							}
-							@Override
-							public void mouseEntered(MouseEvent e) {
-								btnPlan.setForeground(new Color(0,0,50));
-								btnPlan.setBackground(new Color(200,200,250));
-								btnPlan.setCursor(new Cursor(Cursor.HAND_CURSOR));
-							}
-							@Override
-							public void mouseExited(MouseEvent e) {
-								btnPlan.setForeground(new Color(1000,1000,50));
-								btnPlan.setBackground(new Color(100,100,150));
-								
-							}
+							
 						});
 						GridBagConstraints gbc_btnPlan = new GridBagConstraints();
 						gbc_btnPlan.insets = new Insets(0, 0, 5, 5);
