@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
+import auxiliares.interfaces.ReproductorAudio;
 import clases.Ejercicio;
 import clases.Entrenamiento;
 import clases.Gimnasio;
@@ -16,7 +17,6 @@ import enumeration.Musculo;
 import enumeration.NivelUsuario;
 import enumeration.TipoEjercicio;
 import utilidades.DAO;
-import utilidades.ReproductorAudio;
 
 import java.awt.Insets;
 import java.awt.Font;
@@ -60,9 +60,9 @@ public class PantallaEntreno extends JPanel {
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 529, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
 		JLabel etTitulo = new JLabel("Esta es tu rutina");
@@ -196,7 +196,7 @@ public class PantallaEntreno extends JPanel {
 
 		}
 		// Para GYM
-		if ((int) consulta.get(2) == 0) {
+		if ((int) consulta.get(2) == 1) {
 
 			Material material1 = new Material("Mancuerna", "Barra corta y pesada con un agarre en el centro");
 			Material material2 = new Material("Barra olímpica", "Barra larga y pesada");
@@ -394,11 +394,24 @@ public class PantallaEntreno extends JPanel {
 				ventana.cambiarAPantalla(PantallaPanel.class);
 			}
 		});
+		
+		JButton btnCrono = new JButton("Crónometro");
+		btnCrono.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.cambiarAPantalla(VentanaCronometro.class);
+			}
+		});
+		GridBagConstraints gbc_btnCrono = new GridBagConstraints();
+		gbc_btnCrono.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCrono.gridx = 0;
+		gbc_btnCrono.gridy = 2;
+		add(btnCrono, gbc_btnCrono);
 
 		GridBagConstraints gbc_btnVolver = new GridBagConstraints();
 		gbc_btnVolver.insets = new Insets(0, 0, 0, 5);
 		gbc_btnVolver.gridx = 0;
-		gbc_btnVolver.gridy = 2;
+		gbc_btnVolver.gridy = 3;
 		add(btnVolver, gbc_btnVolver);
 
 		final JCheckBox checkMusica = new JCheckBox("Quitar Música");
@@ -414,7 +427,7 @@ public class PantallaEntreno extends JPanel {
 		});
 		GridBagConstraints gbc_checkMusica = new GridBagConstraints();
 		gbc_checkMusica.gridx = 1;
-		gbc_checkMusica.gridy = 2;
+		gbc_checkMusica.gridy = 3;
 		add(checkMusica, gbc_checkMusica);
 	}
 }

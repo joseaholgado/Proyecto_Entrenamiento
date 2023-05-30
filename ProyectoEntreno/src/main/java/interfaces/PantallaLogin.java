@@ -30,10 +30,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
+import auxiliares.interfaces.ReproductorAudio;
 import clases.PlanEntrenamiento;
 import clases.Usuario;
 import exception.UsuarioNoExisteException;
-import utilidades.ReproductorAudio;
 import exception.ContraseñaInvalidaExcepcion;
 import exception.UsuarioNoExisteException;
 
@@ -55,7 +55,7 @@ public class PantallaLogin extends JPanel {
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
 		try {
-			BufferedImage imagen = ImageIO.read(new File("./Login/Login.png"));
+			BufferedImage imagen = ImageIO.read(new File("./Login.png"));
 			g.drawImage(imagen, 0, 0, this);
 			g.drawImage(imagen, 0, 0, this.getWidth(), this.getHeight(), new Color(0, 0, 0), null);
 		} catch (IOException e) {

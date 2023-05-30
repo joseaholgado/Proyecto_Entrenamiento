@@ -4,7 +4,10 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
@@ -19,6 +22,7 @@ import enumeration.NivelUsuario;
 import enumeration.TipoEjercicio;
 
 import javax.swing.JTable;
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -26,6 +30,9 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -41,6 +48,20 @@ public class PantallaDatos extends JPanel {
 	private byte tipoEntreno;
 	private PlanEntrenamiento planE;
 
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paintComponent(g);
+		try {
+			BufferedImage imagen = ImageIO.read(new File("./Pdatos.png"));
+			g.drawImage(imagen, 0, 0, this);
+			g.drawImage(imagen, 0, 0, this.getWidth(), this.getHeight(), new Color(0, 0, 0), null);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
+	
 	public PantallaDatos(Ventana v) {
 		this.ventana = v;
 		// this.planE=ventana.planEntrenamieto;
@@ -51,17 +72,26 @@ public class PantallaDatos extends JPanel {
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-
-		JLabel lblNewLabel = new JLabel(
-				"Hola Guerrero! Antes de nada, necesitamos algunos datos para saber que maestro se ajusta más a tu entrenamiento. Por favor, rellena los campos");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 13));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.fill = GridBagConstraints.BOTH;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
-		gbc_lblNewLabel.gridwidth = 4;
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 0;
-		add(lblNewLabel, gbc_lblNewLabel);
+		
+				JLabel etTitulo = new JLabel(
+						"Hola Guerrero!");
+				etTitulo.setFont(new Font("Arial", Font.PLAIN, 22));
+				GridBagConstraints gbc_etTitulo = new GridBagConstraints();
+				gbc_etTitulo.fill = GridBagConstraints.BOTH;
+				gbc_etTitulo.insets = new Insets(0, 0, 5, 0);
+				gbc_etTitulo.gridx = 1;
+				gbc_etTitulo.gridy = 1;
+				add(etTitulo, gbc_etTitulo);
+				
+				JLabel etTitulo2 = new JLabel(
+						"Dime tus objetivos");
+				etTitulo.setFont(new Font("Arial", Font.PLAIN, 22));
+				GridBagConstraints gbc_etTitulo2 = new GridBagConstraints();
+				gbc_etTitulo2.fill = GridBagConstraints.BOTH;
+				gbc_etTitulo2.insets = new Insets(0, 0, 5, 0);
+				gbc_etTitulo2.gridx = 1;
+				gbc_etTitulo2.gridy = 2;
+				add(etTitulo2, gbc_etTitulo2);
 
 		JLabel etLugar = new JLabel("¿Dónde quieres entrenar?");
 		GridBagConstraints gbc_etLugar = new GridBagConstraints();
@@ -113,7 +143,7 @@ public class PantallaDatos extends JPanel {
 		gbc_etNivel.anchor = GridBagConstraints.NORTH;
 		gbc_etNivel.insets = new Insets(0, 0, 5, 5);
 		gbc_etNivel.gridx = 1;
-		gbc_etNivel.gridy = 6;
+		gbc_etNivel.gridy = 7;
 		add(etNivel, gbc_etNivel);
 
 		final JRadioButton checkPrincipiante = new JRadioButton("Principiante");
@@ -131,7 +161,7 @@ public class PantallaDatos extends JPanel {
 		gbc_checkPrincipiante.anchor = GridBagConstraints.NORTHWEST;
 		gbc_checkPrincipiante.insets = new Insets(0, 0, 5, 5);
 		gbc_checkPrincipiante.gridx = 1;
-		gbc_checkPrincipiante.gridy = 7;
+		gbc_checkPrincipiante.gridy = 8;
 		add(checkPrincipiante, gbc_checkPrincipiante);
 
 		final JRadioButton checkIntermedio = new JRadioButton("Intermedio");
@@ -150,7 +180,7 @@ public class PantallaDatos extends JPanel {
 		gbc_checkIntermedio.fill = GridBagConstraints.HORIZONTAL;
 		gbc_checkIntermedio.insets = new Insets(0, 0, 5, 5);
 		gbc_checkIntermedio.gridx = 2;
-		gbc_checkIntermedio.gridy = 7;
+		gbc_checkIntermedio.gridy = 8;
 		add(checkIntermedio, gbc_checkIntermedio);
 
 		final JRadioButton checkAvanzado = new JRadioButton("Avanzado");
@@ -168,7 +198,7 @@ public class PantallaDatos extends JPanel {
 		gbc_checkAvanzado.anchor = GridBagConstraints.NORTHWEST;
 		gbc_checkAvanzado.insets = new Insets(0, 0, 5, 0);
 		gbc_checkAvanzado.gridx = 3;
-		gbc_checkAvanzado.gridy = 7;
+		gbc_checkAvanzado.gridy = 8;
 		add(checkAvanzado, gbc_checkAvanzado);
 
 		JLabel etTipoEntreno = new JLabel("¿En qué quieres enfocarte?");

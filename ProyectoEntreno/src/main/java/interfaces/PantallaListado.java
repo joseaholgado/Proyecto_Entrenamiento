@@ -23,6 +23,7 @@ import java.util.LinkedHashSet;
 public class PantallaListado extends JPanel {
 	private Ventana ventana;
 
+	
 	public PantallaListado(Ventana v) {
 		this.ventana = v;
 		setLayout(new BorderLayout(0, 0));

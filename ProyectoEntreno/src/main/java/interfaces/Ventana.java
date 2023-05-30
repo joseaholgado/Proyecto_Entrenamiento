@@ -44,6 +44,8 @@ public class Ventana extends JFrame {
 
 		} else if (clase.equals(PantallaEntreno.class)) {
 			this.setContentPane(new PantallaEntreno(this));
+		}else if (clase.equals(VentanaCronometro.class)) {
+				this.setContentPane(new VentanaCronometro(this));
 
 			this.getContentPane().setVisible(true);
 
