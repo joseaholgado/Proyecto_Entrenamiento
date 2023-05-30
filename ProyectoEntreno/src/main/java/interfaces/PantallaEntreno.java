@@ -198,13 +198,12 @@ public class PantallaEntreno extends JPanel {
 		// Para GYM
 		if ((int) consulta.get(2) == 0) {
 
-			Material material1 = new Material("Mancuerna", "barra corta y pesada con un agarre en el centro");
+			Material material1 = new Material("Mancuerna", "Barra corta y pesada con un agarre en el centro");
 			Material material2 = new Material("Barra olímpica", "Barra larga y pesada");
 			Material material3 = new Material("Agarre cuerda",
 					"Cuerda en forma de v con enganche en maquina con poleas");
-			Material material4 = new Material("Maquina Jalón",
-					"Consiste en una estructura con asiento, almohadillas para "
-							+ "el pecho y una barra o agarre conectado a un sistema de poleas");
+			Material material4 = new Material("Maquina Polea",
+					"Consiste en una estructura metálica con un sistema de poleas con o sin asientos");
 			Material material5 = new Material("Step", "Material de plástico que simula un escalon");
 
 			ArrayList<Material> listaMaterial = new ArrayList<Material>();
@@ -219,16 +218,16 @@ public class PantallaEntreno extends JPanel {
 
 			Ejercicio ej = new Series("Press Banca", "Levantar barra con el pecho", Musculo.PECTORAL, nivel,
 					tipoEjercicio, repeticiones, rir, descanso, nseries);
-			Ejercicio ej2 = new Series("Press Superior Banca", "Levantar barra con el pecho en banco plano",
+			Ejercicio ej2 = new Series("Press Superior Banca", "Levantar barra con el pecho en banco inclinado en 45º",
 					Musculo.PECTORAL, nivel, tipoEjercicio, repeticiones, rir, descanso, nseries);
 
 			Ejercicio ej3 = new Series("Elevaciones laterales mancuernas",
 					"Levantar macuernas lateralmente hasta altura del hombro", Musculo.DELTOIDES, nivel, tipoEjercicio,
 					repeticiones, rir, descanso, nseries);
-			Ejercicio ej4 = new Series("Press Militar", "Levantar barra desde cuello hasta encima de la cabeza",
+			Ejercicio ej4 = new Series("Press Militar con barra", "Levantar barra desde cuello hasta encima de la cabeza en banco plano 90º",
 					Musculo.DELTOIDES, nivel, tipoEjercicio, repeticiones, rir, descanso, nseries);
 
-			Ejercicio ej5 = new Series("Sentadilla", "Agacharse y levantarse con barra detras del cuello",
+			Ejercicio ej5 = new Series("Sentadilla con barra", "Agacharse y levantarse con barra detras del cuello",
 					Musculo.CUADRICEPS, nivel, tipoEjercicio, repeticiones, rir, descanso, nseries);
 			Ejercicio ej6 = new Series("Peso muerto", "Levantar barra desde el suelo", Musculo.FEMORAL, nivel,
 					tipoEjercicio, repeticiones, rir, descanso, nseries);
@@ -239,9 +238,9 @@ public class PantallaEntreno extends JPanel {
 					"Inclinado 45º apoyado en banco traccionar mancuerna unilateralmente", Musculo.DORSAL, nivel,
 					tipoEjercicio, repeticiones, rir, descanso, nseries);
 
-			Ejercicio ej9 = new Series("Curl biceps mancuerna", "Levantar mancuerna horizontal unilateral",
+			Ejercicio ej9 = new Series("Curl biceps martillo", "Levantar mancuerna vertical unilateral",
 					Musculo.BICEPS, nivel, tipoEjercicio, repeticiones, rir, descanso, nseries);
-			Ejercicio ej10 = new Series("Curl triceps cuerda", "Levantar mancuerna horizontal unilateral",
+			Ejercicio ej10 = new Series("Extensión triceps cuerda", "Coger cuerda detrás de la cabeza y cuerpo inclinado en 45º",
 					Musculo.TRICEPS, nivel, tipoEjercicio, repeticiones, rir, descanso, nseries);
 
 			Ejercicio ej11 = new Series("Hip trust",
@@ -311,9 +310,9 @@ public class PantallaEntreno extends JPanel {
 					"Agarra un extremo de la banda y pisa el otro extremo. Desde el brazo hacia abajo elevar el brazo encima de la cabeza ",
 					Musculo.DELTOIDES, nivel, tipoEjercicio, repeticiones, rir, descanso, nseries);
 
-			Ejercicio ej5 = new Series("Sentadilla", "Agacharse y levantarse con el propio peso corporal",
+			Ejercicio ej5 = new Series("Sentadilla libre", "Agacharse y levantarse con el propio peso corporal",
 					Musculo.CUADRICEPS, nivel, tipoEjercicio, repeticiones, rir, descanso, nseries);
-			Ejercicio ej6 = new Series("Estocadas",
+			Ejercicio ej6 = new Series("Estocadas (Lunges)",
 					"Da un paso hacia adelante con una pierna y flexiona ambas rodillas para bajar el cuerpo. ",
 					Musculo.CUADRICEPS, nivel, tipoEjercicio, repeticiones, rir, descanso, nseries);
 
