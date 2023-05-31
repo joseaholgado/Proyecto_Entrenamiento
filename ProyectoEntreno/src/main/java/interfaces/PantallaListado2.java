@@ -59,7 +59,7 @@ private Ventana ventana;
 		HashMap<String, Object> hs = new HashMap();
 
 		try {
-			listaEjercicio = DAO.consultar("listaEjercicio", lhs, hs);
+			listaEjercicio = DAO.consultar("listaMateriales", lhs, hs);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

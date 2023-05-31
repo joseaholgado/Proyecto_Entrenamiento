@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VentanaCronometro extends JPanel {
     private Timer tiempo;
@@ -51,16 +53,16 @@ public class VentanaCronometro extends JPanel {
     public VentanaCronometro(Ventana v) {
     	this.ventana=v;
         GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[] { 104, 57, 49, 61, 63, 69, 0 };
-        gridBagLayout.rowHeights = new int[] { 30, 31, 54, 32, 0 };
-        gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-        gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+        gridBagLayout.columnWidths = new int[] { 104, 57, 49, 61, 63, 69, 0, 0 };
+        gridBagLayout.rowHeights = new int[] { 30, 31, 54, 32, 0, 0, 0, 0, 0, 0 };
+        gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+        gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
         setLayout(gridBagLayout);
 
         JLabel etTitulo = new JLabel("Cronómetro");
         etTitulo.setFont(new Font("Tahoma", Font.PLAIN, 25));
         GridBagConstraints gbc_etTitulo = new GridBagConstraints();
-        gbc_etTitulo.insets = new Insets(0, 0, 5, 0);
+        gbc_etTitulo.insets = new Insets(0, 0, 5, 5);
         gbc_etTitulo.gridwidth = 5;
         gbc_etTitulo.gridx = 1;
         gbc_etTitulo.gridy = 1;
@@ -134,9 +136,21 @@ public class VentanaCronometro extends JPanel {
         etReloj = new JLabel("00:00:00:00");
         etReloj.setFont(new Font("Tahoma", Font.PLAIN, 35));
         GridBagConstraints gbc_etReloj = new GridBagConstraints();
-        gbc_etReloj.insets = new Insets(0, 0, 0, 5);
+        gbc_etReloj.insets = new Insets(0, 0, 5, 5);
         gbc_etReloj.gridx = 1;
         gbc_etReloj.gridy = 3;
         add(etReloj, gbc_etReloj);
+        
+        JButton btnAtras = new JButton("Atrás");
+        btnAtras.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		ventana.cambiarAPantalla(PantallaEntreno.class);
+        	}
+        });
+        GridBagConstraints gbc_btnAtras = new GridBagConstraints();
+        gbc_btnAtras.gridx = 6;
+        gbc_btnAtras.gridy = 8;
+        add(btnAtras, gbc_btnAtras);
     }
 }

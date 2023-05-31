@@ -20,6 +20,7 @@ import clases.Usuario;
 import enumeration.Musculo;
 import enumeration.NivelUsuario;
 import enumeration.TipoEjercicio;
+import utilidades.Config;
 
 import javax.swing.JTable;
 import javax.imageio.ImageIO;
@@ -273,7 +274,9 @@ public class PantallaDatos extends JPanel {
 						!= null && btnTipoEntreno.getSelection() != null) {
 				try {
 					planE = new PlanEntrenamiento(nivel, lugar, tipoEntreno, "lunes", ventana.usuarioLogado.getEmail());
+					if(Config.verboseMode) {
 					System.out.println(planE);
+					}
 					ventana.cambiarAPantalla(PantallaLogin.class);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

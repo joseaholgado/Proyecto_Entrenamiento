@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 
+import utilidades.Config;
+
 public class VentanaEmergente extends JDialog {
 
 	public VentanaEmergente(String titulo, String nombre, String descripcion, String imagen, String explicacion) {
@@ -71,9 +73,13 @@ public class VentanaEmergente extends JDialog {
 				}
 			}
 			ImageIO.write(imgEscalaGris, "jpg", new File("imagenGris.jpg"));
+			if(Config.verboseMode) {
 			System.out.println("Imagen convertida a escala de grises y guardada correctamente.");
+			}
 		} catch (IOException e) {
+			if(Config.verboseMode) {
 			System.out.println("Error al leer o escribir la imagen");
+		}
 			e.printStackTrace();
 		}
 

@@ -34,6 +34,7 @@ import auxiliares.interfaces.ReproductorAudio;
 import clases.PlanEntrenamiento;
 import clases.Usuario;
 import exception.UsuarioNoExisteException;
+import utilidades.Config;
 import exception.ContraseñaInvalidaExcepcion;
 import exception.UsuarioNoExisteException;
 
@@ -147,7 +148,9 @@ public class PantallaLogin extends JPanel {
 					comprobar = true;
 					if (comprobar) {
 						ventana.plan = new PlanEntrenamiento(ventana.usuarioLogado.getEmail());
+						if(Config.verboseMode) {
 						System.out.println(ventana.plan);
+						}
 						ventana.cambiarAPantalla(PantallaPanel.class);
 						JOptionPane.showMessageDialog(ventana,
 								"Bienvenid@ de nuevo " + ventana.usuarioLogado.getNombre(), "Login exitoso",

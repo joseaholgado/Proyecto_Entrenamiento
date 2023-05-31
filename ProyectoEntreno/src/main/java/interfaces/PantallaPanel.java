@@ -4,12 +4,16 @@ import javax.swing.JPanel;
 
 import clases.Entrenamiento;
 import clases.PlanEntrenamiento;
+import utilidades.Config;
 
 import java.awt.GridBagLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 
 import javax.swing.JTextField;
+
+import auxiliares.interfaces.ReproductorAudio;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
@@ -29,11 +33,21 @@ public class PantallaPanel extends JPanel {
 	
 	private Ventana ventana;
 	private PlanEntrenamiento plan;
+	private ReproductorAudio reproductor;
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
+		
+		// ----------------------Musica------------------//
+
+				reproductor = new ReproductorAudio();
+				reproductor.reproducir("./Tapion.wav");
+
+				// -----------------------------------------------------
+		
+		
 		try {
 			BufferedImage imagen = ImageIO.read(new File("./Meditando.png"));
 			g.drawImage(imagen, 0, 0, this);
@@ -46,7 +60,9 @@ public class PantallaPanel extends JPanel {
 	public PantallaPanel(Ventana v) {
 		this.ventana = v;
 
+		if(Config.verboseMode) {
 		System.out.println(plan);
+		}
 
 		setBackground(Color.GREEN);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -68,6 +84,7 @@ public class PantallaPanel extends JPanel {
 						btnPlan.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
+								reproductor.detener();
 								ventana.cambiarAPantalla(PantallaEntreno.class);
 							}
 							
@@ -82,6 +99,7 @@ public class PantallaPanel extends JPanel {
 						btnListado.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent e) {
+								reproductor.detener();
 								ventana.cambiarAPantalla(PantallaListado.class);
 							}
 						});
@@ -90,6 +108,20 @@ public class PantallaPanel extends JPanel {
 						gbc_btnListado.gridx = 1;
 						gbc_btnListado.gridy = 4;
 						add(btnListado, gbc_btnListado);
+						
+						JButton btnMaterial = new JButton("Lista Materiales");
+						btnMaterial.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								reproductor.detener();
+								ventana.cambiarAPantalla(PantallaListado2.class);
+							}
+						});
+						GridBagConstraints gbc_btnMaterial = new GridBagConstraints();
+						gbc_btnMaterial.insets = new Insets(0, 0, 5, 5);
+						gbc_btnMaterial.gridx = 1;
+						gbc_btnMaterial.gridy = 5;
+						add(btnMaterial, gbc_btnMaterial);
 
 	}
 

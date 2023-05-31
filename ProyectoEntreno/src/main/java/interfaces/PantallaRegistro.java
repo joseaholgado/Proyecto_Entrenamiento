@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import clases.Usuario;
 import exception.NombreConNumerosException;
+import utilidades.Config;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -181,9 +182,13 @@ public class PantallaRegistro extends JPanel {
 				Date fechaDate = new Date(caleFecha.getDate().getTime());
 				SimpleDateFormat formatoFecha = new SimpleDateFormat("d/MM/yyyy");
 				String fechaFormateada = formatoFecha.format(fechaDate);
+				if(Config.verboseMode) {
 				System.out.println(fechaFormateada);
+				}
 				LocalDate fecha = caleFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				if(Config.verboseMode) {
 				System.out.println(fecha);
+				}
 
 				try {
 					if (nombre.matches(".*\\d.*")) {

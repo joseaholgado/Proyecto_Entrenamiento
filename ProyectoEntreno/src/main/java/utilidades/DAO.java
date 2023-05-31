@@ -85,7 +85,9 @@ public class DAO {
 		}
 		consulta = consulta.substring(0, consulta.length() - 1);
 		consulta += ")";
+		if(Config.verboseMode) {
 		System.out.println(consulta);
+		}
 		int ret = smt.executeUpdate(consulta);
 		desconectar(smt);
 		return ret;
@@ -104,7 +106,9 @@ public class DAO {
 			}
 		}
 		consulta = consulta.substring(0, consulta.length() - 5);
+		if(Config.verboseMode) {
 		System.out.println(consulta);
+		}
 		int ret = smt.executeUpdate(consulta);
 		desconectar(smt);
 		return ret;
@@ -133,7 +137,9 @@ public class DAO {
 		if (restricciones.size() > 0) {
 			query = query.substring(0, query.length() - 5);
 		}
+		if(Config.verboseMode) {
 		System.out.println(query);
+		}
 		ResultSet cursor = smt.executeQuery(query);
 		ArrayList<Object> fila = new ArrayList<Object>();
 		while (cursor.next()) {
@@ -180,7 +186,9 @@ public class DAO {
 		query = query.substring(0, query.length() - 5);
 
 		Statement smt = conectar();
+		if(Config.verboseMode) {
 		System.out.println(query);
+		}
 		int ret = smt.executeUpdate(query);
 		desconectar(smt);
 
