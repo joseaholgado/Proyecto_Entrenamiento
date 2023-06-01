@@ -31,7 +31,10 @@ public class Entrenamiento extends ElementoConNombre {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Entrenamiento: \nejercicios: " + ejercicios + "\ndescripcion: " + descripcion + "\n";
+		return super.toString() + "Entrenamiento: "
+				+ "\nEjercicio a hacer: " + ejercicios 
+				+ "\nParte del cuerpo: " + descripcion 
+				+ "\n";
 	}
 
 }

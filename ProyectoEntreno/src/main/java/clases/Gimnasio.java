@@ -31,7 +31,9 @@ public class Gimnasio extends Ejercicio{
 
 	@Override
 	public String toString() {
-		return super.toString()+"Gimnasio: nombre: "+nombre+"\nmaterial: " + material;
+		return super.toString()+"Gimnasio: "
+				+ "\nNombre: "+nombre
+				+"\nMaterial: " + material;
 	}
 
 	

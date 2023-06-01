@@ -70,8 +70,11 @@ public class Series extends Ejercicio{
 
 	@Override
 	public String toString() {
-		return super.toString()+"Series: \nrepeticiones: " + repeticiones + "\nRIR (Máx peso a levantar, hasta sensación del fallo): " + rir + "\nDescanso entre ejercicios: "
-				+ descansoEntreEjercicios +"\nNúmero de series: "+nseries+"\n";
+		return super.toString()+"Series: "
+				+"\nNúmero de series del ejercicio: "+nseries  
+				+"\nRIR (Máx peso a levantar, hasta sensación del fallo): " + rir 
+				+"\nDescanso entre ejercicios: "+ descansoEntreEjercicios 
+				+"\nRepeticiones por cada serie: " + repeticiones+"\n";
 	}
 	
 	

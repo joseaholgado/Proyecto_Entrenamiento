@@ -120,8 +120,11 @@ public class Ejercicio extends ElementoConNombre {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Ejercicio: " + "\n Tipo de músculo:" + musculo + "\nNivel: " + nivelUsuario
-				+ "\nTipo ejercicio: " + tipoEjercicio + "\nexplicacion: " + explicacion + "\n";
+		return super.toString() + "Ejercicio: " 
+	                            + "\n Tipo de músculo:" + musculo 
+	                            + "\nNivel: " + nivelUsuario
+				                + "\nTipo ejercicio: " + tipoEjercicio 
+	                            + "\nExplicacion del ejercicio: " + explicacion + "\n";
 	}
 
 }

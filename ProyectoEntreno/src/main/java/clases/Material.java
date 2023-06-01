@@ -31,7 +31,8 @@ public class Material extends ElementoConNombre {
 	}
 	@Override
 	public String toString() {
-		return super.toString()+"Material: \nDescripcion: " + descripcion;
+		return super.toString()+"Material: "
+				+ "\nDescripcion: " + descripcion;
 	}
 
 	
